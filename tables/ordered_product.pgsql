@@ -7,7 +7,7 @@ changed
     supplier_name -> changed to int due to change in supplier table
 */
 
-CREATE TABLE ordered_products(
+CREATE TABLE ordered_product(
     ord_prod_id SERIAL PRIMARY KEY,
     order_id INT REFERENCES ext_order ON DELETE CASCADE,
     product_id INT REFERENCES product ON DELETE CASCADE,

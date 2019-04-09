@@ -9,11 +9,11 @@ changed
 
 CREATE TABLE ordered_products(
     ord_prod_id SERIAL PRIMARY KEY,
-    order_id INT REFERENCES orders ON DELETE CASCADE,
-    product_id INT REFERENCES products ON DELETE CASCADE,
+    order_id INT REFERENCES ext_order ON DELETE CASCADE,
+    product_id INT REFERENCES product ON DELETE CASCADE,
     ordered TIMESTAMP NULL,
     collected TIMESTAMP NULL,
     finished TIMESTAMP NULL,
     cancelled TIMESTAMP NULL, 
-    CHECK cannot_be_finished_and_cancelled (finished IS NULL OR cancelled IS NULL)
+    CONSTRAINT cannot_be_finished_and_cancelled CHECK (finished IS NULL OR cancelled IS NULL)
 );

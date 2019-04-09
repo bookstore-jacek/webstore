@@ -6,7 +6,7 @@ changed
 
 CREATE TABLE product(
     id SERIAL PRIMARY KEY,
-    name varchar(50) NOT NULL,
+    name VARCHAR(50) NOT NULL,
     quantity INT NULL,
     threshold INT NULL,
     supplier INT REFERENCES supplier

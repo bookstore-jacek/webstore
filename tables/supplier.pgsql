@@ -6,6 +6,6 @@ changed
 
 CREATE TABLE supplier(
     id SERIAL PRIMARY KEY,
-    name varchar(30) UNIQUE NOT NULL,
-    website varchar(30) UNIQUE NULL
+    name VARCHAR(30) UNIQUE NOT NULL,
+    website VARCHAR(30) UNIQUE NULL
 );

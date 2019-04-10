@@ -1,0 +1,6 @@
+
+CREATE TABLE supp_prod(
+    id SERIAL PRIMARY KEY,
+    supplier INT NOT NULL REFERENCES supplier ON DELETE CASCADE,
+    product INT NOT NULL REFERENCES product ON DELETE CASCADE
+);

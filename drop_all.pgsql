@@ -1,0 +1,7 @@
+DROP TABLE customer CASCADE;
+DROP TABLE supplier CASCADE;
+DROP TABLE product CASCADE;
+DROP TABLE ext_order CASCADE;
+DROP TABLE ordered_product CASCADE;
+DROP TABLE cust_ord CASCADE;
+DROP TABLE supp_prod CASCADE;

@@ -110,9 +110,6 @@ CREATE TABLE ordered_product(
 );
 
 CREATE TABLE supp_prod(
-    id
-        SERIAL
-        PRIMARY KEY,
     product_id
         INT
         REFERENCES product

@@ -92,10 +92,12 @@ CREATE TABLE ordered_product(
     order_id
         INT
         REFERENCES ext_order
+        ON UPDATE CASCADE
         ON DELETE CASCADE,
     product_id
         INT
         REFERENCES product
+        ON UPDATE CASCADE
         ON DELETE CASCADE,
     ordered
         TIMESTAMP,
@@ -113,9 +115,11 @@ CREATE TABLE supp_prod(
     product_id
         INT
         REFERENCES product
+        ON UPDATE CASCADE
         ON DELETE CASCADE,
     supplier_id
         INT
         REFERENCES supplier
+        ON UPDATE CASCADE
         ON DELETE CASCADE
 );

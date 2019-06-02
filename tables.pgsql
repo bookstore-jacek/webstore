@@ -1,11 +1,3 @@
-DROP TABLE customer CASCADE;
-DROP TABLE supplier CASCADE;
-DROP TABLE product CASCADE;
-DROP TABLE ext_order CASCADE;
-DROP TABLE ordered_product CASCADE;
-DROP TABLE supp_prod CASCADE;
-DROP TYPE  payment;
-
 CREATE TYPE payment AS ENUM(
     'not_paid',
     'partly_paid',

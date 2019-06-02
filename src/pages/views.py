@@ -7,5 +7,8 @@ def home_view(request, *args, **kwargs):
 def worker_view(request, *args, **kwargs):
     return render(request, "panel_home.html", {})
     
-def add_customer(request, *args, **kwargs):
+def add_customer_view(request, *args, **kwargs):
     return render(request, "add_customer.html", {})
+
+def update_db_view(request, *args, **kwargs):
+    return render(request, "update_db.html", {})

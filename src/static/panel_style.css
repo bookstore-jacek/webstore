@@ -4,6 +4,11 @@ html, body
 	margin: 0;
 }
 
+a:link {color: #ffffff;}      /* unvisited link */
+a:visited {color: #ffffff;}   /* visited link */
+a:hover {color: #f5f5f5;}     /* mouse over link */
+a:active {color: #ffffff;}    /* selected link */
+
 body
 {
 	background-color: #303030;

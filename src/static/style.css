@@ -4,6 +4,10 @@ html, body
 	margin: 0;
 }
 
+a:visited {
+	color: #ffffff;
+}
+
 body
 {
 	background-color: #303030;

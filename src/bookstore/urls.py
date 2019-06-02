@@ -16,11 +16,22 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from pages.views import home_view, worker_view, add_customer
+from pages.views import home_view, worker_view, add_customer_view, update_db_view
+from Product.views import add_product_view, bulk_order_view
+from ExtOrder.views import find_order_view, all_orders_view, pending_orders_view, add_order_view
+from Customer.views import customers_view
 
 urlpatterns = [
     path('', home_view, name='home'),
     path('admin/', admin.site.urls),
     path('panel/', worker_view, name='panel'),
-    path('panel/add_customer/', add_customer, name='add_customer')
+    path('panel/klienci/', customers_view, name='customers'),
+    path('panel/dodaj-klienta/', add_customer_view, name='add_customer'),
+    path('panel/dodaj-produkt/', add_product_view, name='add_product'),
+    path('panel/dodaj-zamowienie/', add_order_view, name='add_order'),
+    path('panel/aktualizuj-baze/', update_db_view, name='update_db'),
+    path('panel/znajdz-zamowienie/', find_order_view, name='find_order'),
+    path('panel/zamowienie-hurtowe/', bulk_order_view, name='bulk_order'),
+    path('panel/aktualne-zamowienia/', pending_orders_view, name='pending_orders'),
+    path('panel/wszystkie-zamowienia/', all_orders_view, name='all_orders'),
 ]

@@ -6,3 +6,6 @@ def home_view(request, *args, **kwargs):
 
 def worker_view(request, *args, **kwargs):
     return render(request, "panel_home.html", {})
+    
+def add_customer(request, *args, **kwargs):
+    return render(request, "add_customer.html", {})

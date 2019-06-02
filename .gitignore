@@ -4,5 +4,5 @@ lib64
 pyvenv.cfg
 share/
 .plan.swp
-**/__pycache__
-**/migrations
+src/*/__pycache__
+src/*/migrations

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+find | grep __pycache__ | xargs -I x rm -rf x
+find | grep migrations | xargs -I x rm -rf x

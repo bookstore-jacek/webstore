@@ -4,9 +4,10 @@ html, body
 	margin: 0;
 }
 
-a:visited {
-	color: #ffffff;
-}
+a:link {color: #ffffff;}
+a:visited {color: #ffffff;}
+a:hover {color: #f5f5f5;}
+a:active {color: #ffffff;}
 
 body
 {

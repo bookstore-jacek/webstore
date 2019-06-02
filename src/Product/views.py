@@ -6,3 +6,6 @@ def add_product_view(request, *args, **kwargs):
 
 def bulk_order_view(request, *args, **kwargs):
     return render(request, "bulk_order.html", {})
+
+def find_book_view(request, *args, **kwargs):
+    return render(request, "find_book.html", {})

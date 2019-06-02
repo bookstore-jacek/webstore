@@ -12,3 +12,6 @@ def pending_orders_view(request, *args, **kwargs):
 
 def add_order_view(request, *args, **kwargs):
     return render(request, "add_order.html", {})
+
+def check_status_view(request, *args, **kwargs):
+    return render(request, "check_status.html", {})

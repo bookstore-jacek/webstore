@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from pages.views import home_view, worker_view, add_customer
+from pages.views import home_view, worker_view
+from Customer.views import add_customer_view
 
 urlpatterns = [
     path('', home_view, name='home'),
     path('admin/', admin.site.urls),
     path('panel/', worker_view, name='panel'),
-    path('panel/add_customer/', add_customer, name='add_customer')
+    path('panel/add_customer/', add_customer_view, name='add_customer')
 ]

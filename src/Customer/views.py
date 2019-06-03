@@ -14,8 +14,10 @@ def account_view(request, *args, **kwargs):
 
 def add_customer_view(request):
     form = CustomerForm(request.POST or None)
+    #form.clean_customer()
     if form.is_valid():
         form.save()
+        form=CustomerForm()   
     context={
         "form": form
     }

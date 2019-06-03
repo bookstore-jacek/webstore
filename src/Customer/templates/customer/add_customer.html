@@ -3,10 +3,17 @@
 {% block back %}{% endblock %}
 
 {% block content %}
+<div class=add_customer_div1>
+    <div ID="vertical_all"><h1>Dodaj klienta</h1></div>
+</div>
 
-<form action='.' method='POST'>{% csrf_token %}
-{{ form.as_p}}
-<input type='submit' value='Zapisz' />
-</form>
-
+<div class=add_customer_div2>
+    <div id="vertical_all">
+        <form action='.' method='POST'>{% csrf_token %}
+            {{ form.as_p}}
+            <input type='submit' value='Zapisz i dodaj kolejnego Klienta' />
+        </form>
+    </div>
+</div>
+<div style="clear:both;"></div>
 {% endblock %}

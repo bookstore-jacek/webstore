@@ -244,6 +244,18 @@ button[type=button] {
 	float: left; 
 }
 
+.return
+{
+	border-radius: 20px;
+	background-color:#c55a11;
+	height: 40px;
+	width: 80px;
+	margin-top: 20px;
+	margin-left: 140px;
+	text-align: center;
+	float: left;
+	display: table;
+}
 
 .orderlistview
 {

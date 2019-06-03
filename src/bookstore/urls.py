@@ -16,12 +16,29 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from pages.views import home_view, worker_view
-from Customer.views import add_customer_view
+from pages.views import home_view, worker_view, update_db_view
+from ExtOrder.views import find_order_view, all_orders_view, pending_orders_view, add_order_view, check_status_view
+from Product.views import add_product_view, bulk_order_view, find_book_view
+from Customer.views import customers_view, personal_orders_view, account_view, add_customer_view
+
 
 urlpatterns = [
-    path('', home_view, name='home'),
     path('admin/', admin.site.urls),
+
+    path('', home_view, name='home'),
+    path('konto/', account_view, name='account'),
+    path('zamowienia/', personal_orders_view, name='personal_orders'),
+    path('znajdz-ksiazke/', find_book_view, name='find_book'),
+    path('sprawdz-status/', check_status_view, name='check_status'),
+
     path('panel/', worker_view, name='panel'),
-    path('panel/add_customer/', add_customer_view, name='add_customer')
+    path('panel/klienci/', customers_view, name='customers'),
+    path('panel/dodaj-klienta/', add_customer_view, name='add_customer'),
+    path('panel/dodaj-produkt/', add_product_view, name='add_product'),
+    path('panel/aktualizuj-baze/', update_db_view, name='update_db'),
+    path('panel/dodaj-zamowienie/', add_order_view, name='add_order'),
+    path('panel/znajdz-zamowienie/', find_order_view, name='find_order'),
+    path('panel/zamowienie-hurtowe/', bulk_order_view, name='bulk_order'),
+    path('panel/aktualne-zamowienia/', pending_orders_view, name='pending_orders'),
+    path('panel/wszystkie-zamowienia/', all_orders_view, name='all_orders'),
 ]

@@ -1,21 +1,29 @@
 {% extends "base.html" %}
 
 {% block box %}
-<div class="tile1"> 
-    <h3>Znajdź książkę!</h3>
-</div>
+<a href="/znajdz-ksiazke/">
+    <div class="tile1"> 
+        <h3>Znajdź książkę!</h3>
+    </div>
+</a>
 
-<div class="tile2">
-    <h3>Sprawdź status zamówienia!</h3>
-</div>
+<a href="/sprawdz-status/">
+    <div class="tile2">
+        <h3>Sprawdź status zamówienia!</h3>
+    </div>
+</a>
 
 <br style="clear:both" />
 
-<div class="tile2"> 
-    <h3>Twoje zamówienia!</h3>
-</div>
+<a href="/zamowienia/">
+    <div class="tile2"> 
+        <h3>Twoje zamówienia!</h3>
+    </div>
+</a>
 
-<div class="tile1">
-    <h3>Konto!</h3>
-</div>
+<a href="/konto/">
+    <div class="tile1">
+        <h3>Konto!</h3>
+    </div>
+</a>
 {% endblock %}

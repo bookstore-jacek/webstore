@@ -3,14 +3,14 @@
 {% block back %}{% endblock %}
 
 {% block content %}
-<div class=add_product_divl>
+<div class=add_product_div>
     <div ID="vertical_all"><h1>Dodaj produkt</h1></div>
 </div>
 
 <div class=add_product_div>
     <div id="vertical_all">
         <form action='.' method='POST'>{% csrf_token %}
-            {{ form.as_p}}
+            {{ form.as_p }}
             <input type='submit' value='Zapisz i dodaj kolejny produkt' />
         </form>
     </div>

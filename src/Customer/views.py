@@ -10,7 +10,7 @@ def add_customer_view(request):
         form.save()
 
     context={
-        "form":form
+        "form": form
     }
 
-    return render(request, "customer/add_customer.html",context)
+    return render(request, "customer/add_customer.html", context)

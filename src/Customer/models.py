@@ -9,4 +9,4 @@ class Customer(models.Model):
     passhash =      models.TextField(blank=True, null=True)
 
     class Meta:
-        db_table = 'Customer'
+        db_table = 'customer'

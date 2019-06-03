@@ -183,19 +183,7 @@ img
 	background-color: #843c0c;
 }
 
-.add_customer_div1
-{
-	float:left;
-	border-radius: 25px;
-	margin: 10px;
-	width: 430px;
-	height: 75%;
-	background-color: rgba(197, 90, 17, 0.8);
-	text-align: center;
-	display: table;
-}
-
-.add_customer_div2
+.add_customer_div
 {
 	float:left;
 	border-radius: 25px;
@@ -212,7 +200,7 @@ img
     vertical-align: middle;
 }
 
-.add_customer_field
+.input_field
 {
 	margin: 10px;
 	width: 350px;
@@ -220,6 +208,18 @@ img
 	height: 50;
 	background-color: #ffffff;
 	text-align: center;
+}
+
+.add_product_div
+{
+	float:left;
+	border-radius: 25px;
+	margin: 10px;
+	width: 430px;
+	height: 75%;
+	background-color: rgba(197, 90, 17, 0.8);
+	text-align: center;
+	display: table;
 }
 
 input[type=submit] {

@@ -3,11 +3,11 @@
 {% block back %}{% endblock %}
 
 {% block content %}
-<div class=add_customer_div1>
+<div class=add_customer_div>
     <div ID="vertical_all"><h1>Dodaj klienta</h1></div>
 </div>
 
-<div class=add_customer_div2>
+<div class=add_customer_div>
     <div id="vertical_all">
         <form action='.' method='POST'>{% csrf_token %}
             {{ form.as_p}}

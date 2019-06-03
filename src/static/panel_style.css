@@ -233,11 +233,22 @@ input[type=submit] {
 }
 
 button[type=button] {
-	padding:5px 15px; 
-	margin: 10px;
-    background:#ccc; 
-    border:0 none;
-    cursor:pointer;
-    -webkit-border-radius: 5px;
-    border-radius: 5px; 
+	border-radius: 20px;
+	padding: 20px;
+	background-color:rgb(68, 114, 196);
+	height: 10px;
+	width: 60px;
+	margin-top: 20px;
+	margin-left: 140px;
+	text-align: center;
+	float: left; 
+}
+
+
+.orderlistview
+{
+	border-radius: 20px;
+	padding: 20px;
+	background-color:rgba(68, 114, 196, 0.8);
+	height: 75%;
 }

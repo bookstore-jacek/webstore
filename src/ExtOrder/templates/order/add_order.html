@@ -3,20 +3,43 @@
 {% block back %}{% endblock %}
 
 {% block content %}
-<div class="orderlistview">
-    <form action='.' method='POST'>{% csrf_token %}
-        {{ form.as_p}}
-        <input type='submit' value='Szukaj' />
-    </form>
-
-    <h3>Klienci</h3>
-    <form action="." method="post">{% csrf_token %}
-        <ul>
-            {% for customer in customers %}
-            <li><button type="submit">{{ customer.first_name }} {{ customer.last_name }} - {{ customer.phone }} </button></li>
-            {% endfor %}
-        </ul>
-    </form>
-
+<div class="orderaddview">
+    <div id="verticalall">
+        {% if not cust_added %}
+            <h4> Wybierz klienta </h4>
+            <form action='.' method='POST'>{% csrf_token %}
+                {{ customer_form.as_p }}
+                <input type='submit' name='first' value='Szukaj' />
+            </form>
+            {% if cust_found %}
+                <form action='.' method='POST'>{% csrf_token %}
+                    {{ customer_radio_form.as_p }}
+                    <input type='submit' name='second' value='Wybierz' />
+                </form>
+            {% endif %}
+        {% else %}
+            <h4>Klient: {{ choosen_cust.first_name }} {{ choosen_cust.last_name }} - {{ choosen_cust.phone }}</h4><br/>
+            {% if not prod_added %}
+                <h4>Wybierz produkt:</h4>
+                <form action='.' method='POST'>{% csrf_token %}
+                    {{ product_form.as_p }}
+                    <input type='submit' name='third' value='Szukaj' />
+                </form>
+                {% if prod_found %}
+                    <form action='.' method='POST'>{% csrf_token %}
+                        {{ product_radio_form.as_p }}
+                        <input type='submit' name='fourth' value='Wybierz' />
+                    </form>
+                {% endif %}
+            {% else %}
+                <h4>Produkty:</h4>
+                <ul>
+                    {% for prod in choosen_prods %}
+                        <li>{{ prod.name }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endif %}
+    </div>
 </div>
 {% endblock %}

@@ -15,10 +15,7 @@ def order_add_view(request, *args, **kwargs):
     if request.method == "POST":
         form = OrderForm(request.POST)
         if form.is_valid():
-            print(form.cleaned_data)
             form=OrderForm()
-        else:
-            print(form.errors)
     else:
         form = OrderForm()
 

@@ -15,11 +15,7 @@
                 {% for error in form.product1.errors %}
                     {{ error }}
                 {% endfor %}
-                {{ form.product1 }} <br/>
-                {% for error in form.supplier1.errors %}
-                    {{ error }}
-                {% endfor %}
-                {{ form.supplier1 }} <br/> <br/>
+                {{ form.product1 }} <br/> <br/>
                 <div class="choicebutt">
                     {% for error in form.paid.errors %}
                         {{ error }}
@@ -32,18 +28,18 @@
                     {{ error }}
                 {% endfor %}
                 {{ form.product2 }} <br/>
-                {% for error in form.supplier2.errors %}
-                    {{ error }}
-                {% endfor %}
-                {{ form.supplier2 }} <br/>
                 {% for error in form.product3.errors %}
                     {{ error }}
                 {% endfor %}
                 {{ form.product3 }} <br/>
-                {% for error in form.supplier3.errors %}
+                {% for error in form.product4.errors %}
                     {{ error }}
                 {% endfor %}
-                {{ form.supplier3 }}
+                {{ form.product4 }} <br/>
+                {% for error in form.product5.errors %}
+                    {{ error }}
+                {% endfor %}
+                {{ form.product5 }} <br/>
             </div>
             <div id=verticalall>
                 <input type='submit' value='Dodaj' />

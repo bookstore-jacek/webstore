@@ -7,8 +7,6 @@ from OrderedProduct.models import OrderedProduct
 from Product.models import Product
 from Customer.models import Customer
 from Product.models import Product
-from SuppProd.models import SuppProd
-from Supplier.models import Supplier
 # Create your views here.
 
 def order_add_view(request, *args, **kwargs):

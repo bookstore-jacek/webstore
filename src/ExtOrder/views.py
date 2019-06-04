@@ -1,19 +1,26 @@
 from django.shortcuts import render
 from django.views import View
+from django.db.models.functions import Now
 
 from .models import ExtOrder as Order
 from .forms import OrderForm
-from OrderedProduct.models import OrderedProduct
 from Product.models import Product
 from Customer.models import Customer
-from Product.models import Product
+from OrderedProduct.models import OrderedProduct
 # Create your views here.
 
 def order_add_view(request, *args, **kwargs):
     if request.method == "POST":
         form = OrderForm(request.POST)
         if form.is_valid():
-            form=OrderForm()
+            data = form.cleaned_data
+            customer = data.get('phone'),
+            products = [data.get(f'product{x}') for x in range(5) if data.get(f'product{x}') is not None]
+            paid = data.get('paid')
+            order = Order.objects.create(customer_id=customer.id, paid=paid, submitted=Now())
+            for prod in products:
+                OrderedProduct.objects.create(order_id=order.id, product_id=prod.id)
+            form = OrderForm()
     else:
         form = OrderForm()
 

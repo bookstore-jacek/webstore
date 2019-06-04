@@ -35,7 +35,6 @@ def add_product_view(request):
 
 
 def html_to_pdf_view(request):
-       
     ord_prods = OrderedProduct.objects.filter(ordered__isnull=True)
     products = [Product.objects.get(id=x.product_id) for x in ord_prods]
 

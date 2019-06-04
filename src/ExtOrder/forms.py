@@ -22,7 +22,7 @@ class OrderForm(forms.Form):
             match = Customer.objects.get(phone=phone)
         except Customer.DoesNotExist:
             raise forms.ValidationError('Klient z podanym numerem nie istnieje')
-        return phone
+        return match
 
     def clean_product1(self):
         product = self.cleaned_data.get('product1')
@@ -32,7 +32,7 @@ class OrderForm(forms.Form):
             match = Product.objects.get(name__iexact=product)
         except Product.DoesNotExist:
             raise forms.ValidationError('Podany produkt nie istnieje')
-        return match.name
+        return match
 
     def clean_product2(self):
         product = self.cleaned_data.get('product2')
@@ -42,7 +42,7 @@ class OrderForm(forms.Form):
             match = Product.objects.get(name__iexact=product)
         except Product.DoesNotExist:
             raise forms.ValidationError('Podany produkt nie istnieje')
-        return match.name
+        return match
 
     def clean_product3(self):
         product = self.cleaned_data.get('product3')
@@ -52,7 +52,7 @@ class OrderForm(forms.Form):
             match = Product.objects.get(name__iexact=product)
         except Product.DoesNotExist:
             raise forms.ValidationError('Podany produkt nie istnieje')
-        return match.name
+        return match
 
     def clean_product4(self):
         product = self.cleaned_data.get('product4')
@@ -62,7 +62,7 @@ class OrderForm(forms.Form):
             match = Product.objects.get(name__iexact=product)
         except Product.DoesNotExist:
             raise forms.ValidationError('Podany produkt nie istnieje')
-        return match.name
+        return match
 
     def clean_product5(self):
         product = self.cleaned_data.get('product5')
@@ -72,7 +72,7 @@ class OrderForm(forms.Form):
             match = Product.objects.get(name__iexact=product)
         except Product.DoesNotExist:
             raise forms.ValidationError('Podany produkt nie istnieje')
-        return match.name
+        return match
 
     def clean_paid(self):
         return self.cleaned_data.get('paid')

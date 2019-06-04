@@ -1,11 +1,3 @@
--- SUPPLIERS
-INSERT INTO supplier (name,website)
-    VALUES ('Tanie Książki','www.tanie-ksiazki.pl');
-INSERT INTO supplier (name,website)
-    VALUES ('Szybka Książka','www.szybkaksiazka.pl');
-INSERT INTO supplier (name,website)
-    VALUES ('Hurtownia książek','www.ksiazkianc.pl');
-
 -- CUSTOMERS
 INSERT INTO customer (first_name,last_name,phone,email,passhash)
     VALUES ('Adam','Kowalski',123456789,'adamk@wp.pl','qwertyui');
@@ -19,38 +11,18 @@ INSERT INTO customer (first_name,last_name,phone)
 -- PRODUCTS
 INSERT INTO product (name,quantity,threshold)
     VALUES ('Potop',3,1);
-INSERT INTO supp_prod (supplier_id, product_id)
-    SELECT supplier.id, MAX(product.id) FROM supplier, product
-        WHERE supplier.name='Szybka Książka'
-        GROUP BY supplier.id;
 
 INSERT INTO product (name,quantity)
     VALUES ('Przepisy na każdy dzień',2);
-INSERT INTO supp_prod (supplier_id, product_id)
-    SELECT supplier.id, MAX(product.id) FROM supplier, product
-        WHERE supplier.name='Tanie Książki'
-        GROUP BY supplier.id;
 
 INSERT INTO product (name)
     VALUES ('Przewodnik po Karkonoszach');
-INSERT INTO supp_prod (supplier_id, product_id)
-    SELECT supplier.id, MAX(product.id) FROM supplier, product
-        WHERE supplier.name='Szybka Książka'
-        GROUP BY supplier.id;
 
 INSERT INTO product (name,quantity,threshold)
     VALUES ('Kordian',1,1);
-INSERT INTO supp_prod (supplier_id, product_id)
-    SELECT supplier.id, MAX(product.id) FROM supplier, product
-        WHERE supplier.name='Tanie Książki'
-        GROUP BY supplier.id;
 
 INSERT INTO product (name,quantity,threshold)
     VALUES ('Farby plakatowe 12 kolorów Astra',5,1);
-INSERT INTO supp_prod (supplier_id, product_id)
-    SELECT supplier.id, MAX(product.id) FROM supplier, product
-        WHERE supplier.name='Tanie Książki'
-        GROUP BY supplier.id;
 
 -- ORDERS
 INSERT INTO ext_order (customer_id, paid, submitted)

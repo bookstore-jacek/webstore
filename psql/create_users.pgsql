@@ -4,9 +4,7 @@ ON
     customer,
     ext_order,
     ordered_product,
-    product,
-    supp_prod,
-    supplier 
+    product
 TO worker;
 
 CREATE ROLE extern WITH LOGIN PASSWORD 'asdflwdf';

@@ -25,19 +25,6 @@ CREATE TABLE customer(
         TEXT
 );
 
-CREATE TABLE supplier(
-    id
-        SERIAL
-        PRIMARY KEY,
-    name
-        VARCHAR(30)
-        UNIQUE
-        NOT NULL,
-    website
-        VARCHAR(30)
-        UNIQUE
-);
-
 CREATE TABLE ext_order(
     id
         SERIAL
@@ -58,7 +45,6 @@ CREATE TABLE ext_order(
     CONSTRAINT cannot_be_finished_and_cancelled
         CHECK (finished IS NULL OR cancelled IS NULL)
 );
-
 
 CREATE TABLE product(
     id
@@ -102,17 +88,4 @@ CREATE TABLE ordered_product(
         TIMESTAMP, 
     CONSTRAINT cannot_be_finished_and_cancelled
         CHECK (finished IS NULL OR cancelled IS NULL)
-);
-
-CREATE TABLE supp_prod(
-    product_id
-        INT
-        REFERENCES product
-        ON UPDATE CASCADE
-        ON DELETE CASCADE,
-    supplier_id
-        INT
-        REFERENCES supplier
-        ON UPDATE CASCADE
-        ON DELETE CASCADE
 );

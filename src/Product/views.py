@@ -24,7 +24,6 @@ def find_book_view(request, *args, **kwargs):
 
 def add_product_view(request):
     form = ProductForm(request.POST or None)
-    #form.clean_customer()
     if form.is_valid():
         form.save()
         form=ProductForm()

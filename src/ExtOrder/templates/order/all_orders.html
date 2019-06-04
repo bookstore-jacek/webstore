@@ -1,13 +1,7 @@
 {% extends "panel_base.html" %}
 
 {% block back %}
-<a href="/panel/">
-    <div class="return">
-        <div id="vertical_all">    
-            Wróć
-        </div>
-    </div>
-</a>
+<input type=button value="Wstecz" onClick="javascript:history.go(-1);">
 {% endblock %}
 
 {% block content %}

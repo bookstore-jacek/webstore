@@ -46,8 +46,6 @@ INSTALLED_APPS = [
     'ExtOrder',
     'OrderedProduct',
     'Product',
-    'SuppProd',
-    'Supplier',
 ]
 
 MIDDLEWARE = [

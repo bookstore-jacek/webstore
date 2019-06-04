@@ -1,10 +1,20 @@
 from django.shortcuts import render
-from .models import Product
+from ExtOrder.models import ExtOrder as Order
+from OrderedProduct.models import OrderedProduct
+from Product.models import Product
+from Customer.forms import CustomerForm
+from Customer.models import Customer
+
 from .forms import ProductForm
+from datetime import datetime
+now = datetime.now()
+
+from weasyprint import HTML, CSS
+from django.template.loader import get_template
+from django.http import HttpResponse
 
 from django.http import HttpResponse
 from django.views.generic import View
-
 from .utils import render_to_pdf #created in step 4
 
 # Create your views here.
@@ -58,7 +68,7 @@ def add_product_view(request):
 #            {
 #                'pagesize':'A4',
 #            }
-#        )l
+#        )
 
 
 # class GeneratePdf_view(View):
@@ -74,15 +84,57 @@ def add_product_view(request):
 
 
 
-class GeneratePdf(View):
-    def get(self, request, *args, **kwargs):
-        data = {
-            'order_id': 1233434,
-        }
-        pdf = render_to_pdf('product/zamowienie.html', data)
-        return HttpResponse(pdf, content_type='application/pdf')
+# class GeneratePdf(View):
+#     def get(self, request, *args, **kwargs):
+#         data = {
+#             'title': "zażółć gęślą jaźń:",
+#             'actual_date': now.strftime("%d.%m.%Y %H:%M"),
+#         }
+#         pdf = render_to_pdf('product/zamowienie.html', data)
+#         return HttpResponse(pdf, content_type='application/pdf')
+
+# from django.http import HttpResponse
+# from django.views.generic import View
+
+# from .utils import render_to_pdf #created in step 4
+
+# class GeneratePdf(View):
+#     def get(self, request, *args, **kwargs):
+#         produkty = Product.objects.all()      
+#         # data = {'produkty': produkty}
+#         pdf = render_to_pdf('product/zamowienie.html', {'produkty': produkty})
+#         return HttpResponse(pdf, content_type='application/pdf')
 
 
 
+from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponse
+from django.template.loader import render_to_string
 
-#https://github.com/codingforentrepreneurs/Guides/blob/master/all/Render_to_PDF_in_Django.md
+from weasyprint import HTML
+
+def html_to_pdf_view(request):
+    paragraphs = ['first paragraph', 'second paragraph', 'third paragraph']
+        
+    ord_prods = OrderedProduct.objects.filter(ordered__in=(""))
+    products = [Product.objects.get(id=x.product_id) for x in ord_prods]
+    print len (products)
+    html_string = render_to_string('product/zamowienie.html', {
+        'paragraphs': paragraphs,
+        'actual_date_time': now.strftime("%d.%m.%Y %H:%M"),
+        'products': products,
+        'Product': Product,
+        'ord_prods': ord_prods
+        
+        })
+
+    html = HTML(string=html_string)
+    html.write_pdf(target='/tmp/zamowienie.pdf');
+
+    fs = FileSystemStorage('/tmp')
+    with fs.open('zamowienie.pdf') as pdf:
+        response = HttpResponse(pdf, content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="zamowienie.pdf"'
+        return response
+
+    return response

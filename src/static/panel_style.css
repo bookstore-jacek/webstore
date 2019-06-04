@@ -272,3 +272,19 @@ button[type=button] {
 	background-color:rgba(68, 114, 196, 0.8);
 	height: 75%;
 }
+
+.order_col1
+{
+	float: left;
+	width: 50%;
+}
+.order_col2
+{
+	float: left;
+	width: 50%;
+}
+
+.choicebutt
+{
+	margin-left: 20px;
+}

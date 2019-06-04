@@ -5,41 +5,50 @@
 {% block content %}
 <div class="orderaddview">
     <div id="verticalall">
-        {% if not cust_added %}
-            <h4> Wybierz klienta </h4>
-            <form action='.' method='POST'>{% csrf_token %}
-                {{ customer_form.as_p }}
-                <input type='submit' name='first' value='Szukaj' />
-            </form>
-            {% if cust_found %}
-                <form action='.' method='POST'>{% csrf_token %}
-                    {{ customer_radio_form.as_p }}
-                    <input type='submit' name='second' value='Wybierz' />
-                </form>
-            {% endif %}
-        {% else %}
-            <h4>Klient: {{ choosen_cust.first_name }} {{ choosen_cust.last_name }} - {{ choosen_cust.phone }}</h4><br/>
-            {% if not prod_added %}
-                <h4>Wybierz produkt:</h4>
-                <form action='.' method='POST'>{% csrf_token %}
-                    {{ product_form.as_p }}
-                    <input type='submit' name='third' value='Szukaj' />
-                </form>
-                {% if prod_found %}
-                    <form action='.' method='POST'>{% csrf_token %}
-                        {{ product_radio_form.as_p }}
-                        <input type='submit' name='fourth' value='Wybierz' />
-                    </form>
-                {% endif %}
-            {% else %}
-                <h4>Produkty:</h4>
-                <ul>
-                    {% for prod in choosen_prods %}
-                        <li>{{ prod.name }}</li>
+        <h4>Wprowadź zamówienie</h4> <br/> <br/>
+        <form action='.' method='POST'>{% csrf_token %}
+            <div class=order_col1>
+                {% for error in form.phone.errors %}
+                    {{ error }}
+                {% endfor %}
+                {{ form.phone }} <br/>
+                {% for error in form.product1.errors %}
+                    {{ error }}
+                {% endfor %}
+                {{ form.product1 }} <br/>
+                {% for error in form.supplier1.errors %}
+                    {{ error }}
+                {% endfor %}
+                {{ form.supplier1 }} <br/> <br/>
+                <div class="choicebutt">
+                    {% for error in form.paid.errors %}
+                        {{ error }}
                     {% endfor %}
-                </ul>
-            {% endif %}
-        {% endif %}
+                    {{ form.paid }}
+                </div>
+            </div>
+            <div class=order_col2>
+                {% for error in form.product2.errors %}
+                    {{ error }}
+                {% endfor %}
+                {{ form.product2 }} <br/>
+                {% for error in form.supplier2.errors %}
+                    {{ error }}
+                {% endfor %}
+                {{ form.supplier2 }} <br/>
+                {% for error in form.product3.errors %}
+                    {{ error }}
+                {% endfor %}
+                {{ form.product3 }} <br/>
+                {% for error in form.supplier3.errors %}
+                    {{ error }}
+                {% endfor %}
+                {{ form.supplier3 }}
+            </div>
+            <div id=verticalall>
+                <input type='submit' value='Dodaj' />
+            </div>
+        </form>
     </div>
 </div>
 {% endblock %}

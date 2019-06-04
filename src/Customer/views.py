@@ -14,7 +14,6 @@ def account_view(request, *args, **kwargs):
 
 def add_customer_view(request):
     form = CustomerForm(request.POST or None)
-    #form.clean_customer()
     if form.is_valid():
         form.save()
         form=CustomerForm()   
@@ -25,7 +24,6 @@ def add_customer_view(request):
 
 def add_product_view(request):
     form = ProductForm(request.POST or None)
-    #form.clean_customer()
     if form.is_valid():
         form.save()
         form=CustomerForm()   

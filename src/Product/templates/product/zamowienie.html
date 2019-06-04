@@ -114,11 +114,11 @@
        </tr>
      </thead>
      <tbody>
-       {% for products in ord_prods %}
+       {% for product in products %}
          <tr>
-           <td>{{ products.name }}</td>
-           <td>{{ products.quantity }}</td>
-           <td>{{ products.threshold }}</td>
+           <td>{{ product.name }}</td>
+           <td>{{ product.quantity }}</td>
+           <td>{{ product.threshold }}</td>
          </tr>
        {% endfor %}    
      </tbody>

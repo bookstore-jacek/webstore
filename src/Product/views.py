@@ -116,16 +116,15 @@ from weasyprint import HTML
 def html_to_pdf_view(request):
     paragraphs = ['first paragraph', 'second paragraph', 'third paragraph']
         
-    ord_prods = OrderedProduct.objects.filter(ordered__in=(""))
+    ord_prods = OrderedProduct.objects.filter(ordered__isnull=True)
     products = [Product.objects.get(id=x.product_id) for x in ord_prods]
-    print len (products)
+
+    print(len(products))
+
     html_string = render_to_string('product/zamowienie.html', {
         'paragraphs': paragraphs,
         'actual_date_time': now.strftime("%d.%m.%Y %H:%M"),
         'products': products,
-        'Product': Product,
-        'ord_prods': ord_prods
-        
         })
 
     html = HTML(string=html_string)

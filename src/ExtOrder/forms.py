@@ -1,39 +1,90 @@
 from django import forms   
 from .models import ExtOrder as Order
+from Customer.models import Customer
+from Product.models import Product
+from Supplier.models import Supplier
 
-class CustomerForm(forms.Form):
-    text = forms.CharField(label='', required=True, widget=forms.TextInput(attrs={ "placeholder":"Wyszukaj klienta *", "class": "input_field"}))
+class OrderForm(forms.Form):
+    phone     = forms.CharField(label='', required=True,  widget=forms.TextInput(attrs={ "placeholder":"Numer telefonu *",       "class":"input_field"}))
+    product1  = forms.CharField(label='', required=True,  widget=forms.TextInput(attrs={ "placeholder":"Produkt *",              "class":"input_field"}))
+    supplier1 = forms.CharField(label='', required=True,  widget=forms.TextInput(attrs={ "placeholder":"Dostawca *",             "class":"input_field"}))
+    product2  = forms.CharField(label='', required=False, widget=forms.TextInput(attrs={ "placeholder":"(opcjonalne) Produkt *", "class":"input_field"}))
+    supplier2 = forms.CharField(label='', required=False, widget=forms.TextInput(attrs={ "placeholder":"(opcjonalne) Dostawca *","class":"input_field"}))
+    product3  = forms.CharField(label='', required=False, widget=forms.TextInput(attrs={ "placeholder":"(opcjonalne) Produkt *", "class":"input_field"}))
+    supplier3 = forms.CharField(label='', required=False, widget=forms.TextInput(attrs={ "placeholder":"(opcjonalne) Dostawca *","class":"input_field"}))
+    paid      = forms.ChoiceField(choices=(('not_paid',    'Nieopłacone'),
+                                           ('partly_paid', 'Wpłacono zaliczkę'),
+                                           ('fully_paid',  'Opłacone')))
 
+    def clean_phone(self):
+        phone = self.cleaned_data.get('phone')
+        if not (len(phone) == 9 or len(phone) == 12):
+            raise forms.ValidationError('Wprowadzony numer jest nieprawidłowy')
+        try:
+            match = Customer.objects.get(phone=phone)
+        except Customer.DoesNotExist:
+            raise forms.ValidationError('Klient z podanym numerem nie istnieje')
+        return phone
+
+    def clean_product1(self):
+        product = self.cleaned_data.get('product1')
+        if product == "":
+            raise forms.ValidationError('Pole wymagane')
+        try:
+            match = Product.objects.get(name__iexact=product)
+        except Product.DoesNotExist:
+            raise forms.ValidationError('Podany produkt nie istnieje')
+        return match.name
+
+    def clean_supplier1(self):
+        supplier = self.cleaned_data.get('supplier1')
+        if supplier == "":
+            raise forms.ValidationError('Pole wymagane')
+        try:
+            match = Supplier.objects.get(name__iexact=supplier)
+        except Supplier.DoesNotExist:
+            raise forms.ValidationError('Podany dostawca nie istnieje')
+        return match.name
     
+    def clean_product2(self):
+        product = self.cleaned_data.get('product2')
+        if product == "":
+            return None
+        try:
+            match = Product.objects.get(name__iexact=product)
+        except Product.DoesNotExist:
+            raise forms.ValidationError('Podany produkt nie istnieje')
+        return match.name
 
-# class OrderForm(forms.ModelForm):
-#     CHOICES=[('select1','select 1'),
-#             ('select2','select 2')]
-#     paid = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect)
-    
-#     class Meta:
-#         model = Order
-#         fields = [
-#             'paid',
-#         ]   
-    
-#     # def clean_customer(self, *args, **kwargs):
-#     #     email= self.cleaned_data.get("email")
-#     #     if None in email:
-#     #         return None
+    def clean_supplier2(self):
+        supplier = self.cleaned_data.get('supplier2')
+        if supplier == "":
+            return None
+        try:
+            match = Supplier.objects.get(name__iexact=supplier)
+        except Supplier.DoesNotExist:
+            raise forms.ValidationError('Podany dostawca nie istnieje')
+        return match.name
 
-#     def clean_email(self):
-#         # Get the email
-#         email = self.cleaned_data.get('email')
-#         if email == "" :
-#             return None
+    def clean_product3(self):
+        product = self.cleaned_data.get('product3')
+        if product == "":
+            return None
+        try:
+            match = Product.objects.get(name__iexact=product)
+        except Product.DoesNotExist:
+            raise forms.ValidationError('Podany produkt nie istnieje')
+        return match.name
 
-#         # Check to see if any users already exist with this email as a username.
-#         try:
-#             match = Customer.objects.get(email=email)
-#         except Customer.DoesNotExist:
-#             # Unable to find a user, this is fine
-#             return email
+    def clean_supplier3(self):
+        supplier = self.cleaned_data.get('supplier3')
+        if supplier == "":
+            return None
+        try:
+            match = Supplier.objects.get(name__iexact=supplier)
+        except Supplier.DoesNotExist:
+            raise forms.ValidationError('Podany dostawca nie istnieje')
+        return match.name
 
-#         # A user was found with this as a username, raise an error.
-#         raise forms.ValidationError('Wprowadzony e-mail już istnieje.')
+    def clean_paid(self):
+        return self.cleaned_data.get('paid')

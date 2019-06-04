@@ -3,20 +3,52 @@
 {% block back %}{% endblock %}
 
 {% block content %}
-<div class="orderlistview">
-    <form action='.' method='POST'>{% csrf_token %}
-        {{ form.as_p}}
-        <input type='submit' value='Szukaj' />
-    </form>
-
-    <h3>Klienci</h3>
-    <form action="." method="post">{% csrf_token %}
-        <ul>
-            {% for customer in customers %}
-            <li><button type="submit">{{ customer.first_name }} {{ customer.last_name }} - {{ customer.phone }} </button></li>
-            {% endfor %}
-        </ul>
-    </form>
-
+<div class="orderaddview">
+    <div id="verticalall">
+        <h4>Wprowadź zamówienie</h4> <br/> <br/>
+        <form action='.' method='POST'>{% csrf_token %}
+            <div class=order_col1>
+                {% for error in form.phone.errors %}
+                    {{ error }}
+                {% endfor %}
+                {{ form.phone }} <br/>
+                {% for error in form.product1.errors %}
+                    {{ error }}
+                {% endfor %}
+                {{ form.product1 }} <br/>
+                {% for error in form.supplier1.errors %}
+                    {{ error }}
+                {% endfor %}
+                {{ form.supplier1 }} <br/> <br/>
+                <div class="choicebutt">
+                    {% for error in form.paid.errors %}
+                        {{ error }}
+                    {% endfor %}
+                    {{ form.paid }}
+                </div>
+            </div>
+            <div class=order_col2>
+                {% for error in form.product2.errors %}
+                    {{ error }}
+                {% endfor %}
+                {{ form.product2 }} <br/>
+                {% for error in form.supplier2.errors %}
+                    {{ error }}
+                {% endfor %}
+                {{ form.supplier2 }} <br/>
+                {% for error in form.product3.errors %}
+                    {{ error }}
+                {% endfor %}
+                {{ form.product3 }} <br/>
+                {% for error in form.supplier3.errors %}
+                    {{ error }}
+                {% endfor %}
+                {{ form.supplier3 }}
+            </div>
+            <div id=verticalall>
+                <input type='submit' value='Dodaj' />
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}

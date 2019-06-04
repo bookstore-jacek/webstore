@@ -2,41 +2,28 @@ from django.shortcuts import render
 from django.views import View
 
 from .models import ExtOrder as Order
+from .forms import OrderForm
 from OrderedProduct.models import OrderedProduct
 from Product.models import Product
-from .forms import CustomerForm
 from Customer.models import Customer
-
-from functools import reduce
+from Product.models import Product
+from SuppProd.models import SuppProd
+from Supplier.models import Supplier
 # Create your views here.
 
-def find_customers(some_data):
-    text = some_data.strip().split(' ')
-    customers = []
-    for n, word in enumerate(text):
-        customers.append(set())
-        try:
-            num = int(word)
-            customers[n].update([customer for customer in Customer.objects.filter(phone__contains=num)])
-        except ValueError:
-            pass
-        customers[n].update([customer for customer in Customer.objects.filter(first_name__icontains=word)])
-        customers[n].update([customer for customer in Customer.objects.filter(last_name__icontains=word)])
-        customers[n].update([customer for customer in Customer.objects.filter(email__icontains=word)])
-        for cust in customers[n]:
-            print(n, cust)
-    customers = list(reduce(lambda x, y: x & y, customers))
-    return customers
-
-def add_order_view(request):
-    form = CustomerForm(request.POST or None)
-    customers = []
-    if form.is_valid():
-        customers = find_customers(form.cleaned_data.get('text'))
+def order_add_view(request, *args, **kwargs):
+    if request.method == "POST":
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+            form=OrderForm()
+        else:
+            print(form.errors)
+    else:
+        form = OrderForm()
 
     context={
-        "form": form,
-        "customers": customers
+        "form": form
     }
     return render(request, "order/add_order.html", context)
 
@@ -56,6 +43,7 @@ class Orders_list_view(View):
             'orders': self.get_queryset()
         }
         return render(request, self.template_name, context)
+
 
 def find_order_view(request, *args, **kwargs):
     return render(request, "order/find_order.html", {})

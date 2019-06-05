@@ -7,6 +7,6 @@ class ExtorderConfig(AppConfig):
 from django.apps import AppConfig
 
 
-class QRCodeDemoConfig(AppConfig):
+class QrCodeConfig(AppConfig):
     name = 'qr_code'
-verbose_name = 'Django QR Code'
+verbose_name = 'Django QR code'

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import View
 from django.db.models.functions import Now
 
@@ -11,6 +11,10 @@ from Customer.models import Customer
 from OrderedProduct.models import OrderedProduct
 
 from qr_code.qrcode.utils import ContactDetail, WifiConfig, Coordinates, QRCodeOptions
+
+import base64
+import binascii
+from io import BytesIO
 # Create your views here.
 
 def find_order_view(request, *args, **kwargs):
@@ -89,12 +93,10 @@ def check_status_view(request, *args, **kwargs):
 
 def detail_view(request, id):
     obj = get_object_or_404(Order, id=id)
-    orders = list(Order.objects.all())
-    ord_products = [OrderedProduct.objects.filter(order_id=order.id) for order in orders]
-    products = []    
+    product=Product.objects.all()
     context = {
         'order': obj,
-        'product': products
+        'product': product
     }
     return render(request, "order/order_details.html", context)
 

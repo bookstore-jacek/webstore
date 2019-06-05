@@ -32,12 +32,16 @@ class ProductForm(forms.ModelForm):
     def clean_quantity(self):
         quantity = self.cleaned_data.get('quantity')
         if quantity == "" :
-            return None
+            return '0'
+        else:
+            return quantity
 
     def clean_threshold(self):
         threshold = self.cleaned_data.get('threshold')
         if threshold == "" :
-            return None
+            return '0'
+        else:
+            return threshold
 
     def clean_name(self):
         return self.cleaned_data['name'].capitalize()

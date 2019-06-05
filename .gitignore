@@ -10,3 +10,5 @@ src/*/migrations
 */.vscode
 */*/.vscode
 ~
+src/~
+src/.vscode

@@ -36,21 +36,8 @@ def add_product_view(request):
 
 
 def html_to_pdf_view(request):
-    ord_prods = OrderedProduct.objects.filter(ordered__isnull=True)
-    products = [Product.objects.get(id=x.product_id) for x in ord_prods]
-
-    # ilosc = [x.quantity - x.threshold for x in products]
-    # ilosc = products.threshold - products.quantity
-
-    # bulk_prod= Product.objects.all()
-    
-    products2 = [[str(prod.id) for prod in Product.objects.all() if prod.threshold != None and int(prod.threshold) - int(prod.quantity) > 0]]
-
-    # instance_ids = [Product.objects.get(id=x.id) for x in bulk_ord] + [Product.objects.get(id=x.product_id) for x in ord_prods]
-    # counter = Counter(instance_ids)
-
     external = Counter([str(x.product_id) for x in OrderedProduct.objects.filter(ordered__isnull=True)])
-    internal = Counter([str(prod.id) for prod in Product.objects.all() if prod.threshold != None and prod.threshold != '0' and int(prod.threshold) - int(prod.quantity) > 0])
+    internal = {str(prod.id): prod.threshold-prod.quantity for prod in Product.objects.all() if prod.threshold - prod.quantity > 0}
     all_keys = set({**external, **internal}.keys())
     order = []
     for i, key in enumerate(all_keys):
@@ -61,18 +48,10 @@ def html_to_pdf_view(request):
             value += internal[key]
         order += [(Product.objects.get(id=int(key)), value)]
 
-    internal_external_sum=Counter(internal+external)
-
-    print(external)
-    print(internal)
-    print(internal_external_sum)
-    print(order)
-
     html_string = render_to_string('product/zamowienie.html', {
         'actual_date_time': now.strftime("%d.%m.%Y %H:%M"),
-        'prod': Product
-        # 'ilosc_bulk' : products.quantity - products.threshold
-        })
+        'order': order
+    })
 
     html = HTML(string=html_string)
     html.write_pdf(target='/tmp/zamowienie.pdf');

@@ -17,9 +17,9 @@ def order_add_view(request, *args, **kwargs):
             customer = data.get('phone'),
             products = [data.get(f'product{x}') for x in range(5) if data.get(f'product{x}') is not None]
             paid = data.get('paid')
-            order = Order.objects.create(customer_id=customer.id, paid=paid, submitted=Now())
+            order = Order.objects.create(customer_id=customer[0].id, paid=paid, submitted=Now())
             for prod in products:
-                OrderedProduct.objects.create(order_id=order.id, product_id=prod.id)
+                ord_prod = OrderedProduct.objects.create(order_id=order.id, product_id=prod.id)
             form = OrderForm()
     else:
         form = OrderForm()
@@ -29,22 +29,17 @@ def order_add_view(request, *args, **kwargs):
     }
     return render(request, "order/add_order.html", context)
 
-class Orders_list_view(View):
-    template_name = "order/all_orders.html"
+def orders_list_view(request, *args, **kwargs):
     orders = Order.objects.all()
     ord_products = [OrderedProduct.objects.filter(order_id=order.id) for order in orders]
     products = []
     for ord_prod_filtered in ord_products:
         products.append([Product.objects.get(id=ord_prod.product_id) for ord_prod in ord_prod_filtered])
 
-    def get_queryset(self):
-        return zip(self.orders, self.products)
-    
-    def get(self, request, *args, **kwargs):
-        context = {
-            'orders': self.get_queryset()
-        }
-        return render(request, self.template_name, context)
+    context = {
+        'orders': zip(orders, products)
+    }
+    return render(request, "order/all_orders.html", context)
 
 
 def find_order_view(request, *args, **kwargs):

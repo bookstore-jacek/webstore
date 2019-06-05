@@ -7,19 +7,28 @@
 {% block content %}
 <div class="orderlistview">
     <h1>Orders</h1>
-    <ul>
-        {% for order, products in orders %}
-        <li>{{ order.submitted }} - {{ order.customer.first_name }} {{ order.customer.last_name }} - {{ order.customer.phone }} </li>
+    <nav>
         <ul>
-            {% for product in products %}
-            <li>{{ product.name }}</li>
-            {% empty %}
-            <li>No products in order</li>
+            {% for order, products in orders %}
+            <li>
+                {{ order.submitted }} - {{ order.customer.first_name }} {{ order.customer.last_name }} 
+                {% if order.finished is not None %}
+                - Zamknięte {{ order.finished }}
+                {% elif order.cancelled is not None %}
+                - Anulowane {{ order.cancelled }}
+                {% endif %}
+            </li>
+            <ul>
+                {% for product in products %}
+                <li>{{ product.name }}</li>
+                {% empty %}
+                <li>No products in order</li>
+                {% endfor %}
+            </ul>
+            {% empty %} 
+            <li>No orders found</li>
             {% endfor %}
         </ul>
-        {% empty %} 
-        <li>No orders found</li>
-        {% endfor %}
-    </ul>
+    </nav >
 </div>
 {% endblock %}

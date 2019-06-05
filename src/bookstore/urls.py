@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import path
 
 from pages.views import home_view, worker_view, update_db_view, contact_view
 from ExtOrder.views import find_order_view, all_orders_view, pending_orders_view, check_status_view, add_order_view
@@ -42,7 +42,5 @@ urlpatterns = [
     path('panel/znajdz-zamowienie/', find_order_view, name='find_order'),
     path('panel/zamowienie-hurtowe/', html_to_pdf_view, name='generate_pdf'),
     path('panel/aktualne-zamowienia/', pending_orders_view, name='pending_orders'),
-    path('panel/wszystkie-zamowienia/', all_orders_view, name='all_orders'),
-
-    path('zamowienie/', include('ExtOrder.urls'))
+    path('panel/wszystkie-zamowienia/', all_orders_view, name='all_orders')
 ]

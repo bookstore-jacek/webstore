@@ -1,6 +1,5 @@
 from django.db import models
 from Customer.models import Customer
-from django.urls import reverse
 
 # Create your models here.
 class ExtOrder(models.Model):
@@ -12,6 +11,3 @@ class ExtOrder(models.Model):
 
     class Meta:
         db_table = 'ext_order'
-
-    def get_absolute_url(self):
-        return reverse("zamowienie:order-detail/",kwargs={"id":self.id})

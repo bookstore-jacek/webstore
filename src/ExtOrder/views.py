@@ -93,10 +93,10 @@ def check_status_view(request, *args, **kwargs):
 
 def detail_view(request, id):
     obj = get_object_or_404(Order, id=id)
-    product=Product.objects.all()
+    order, products = list(attach_products([obj]))[0]
     context = {
-        'order': obj,
-        'product': product
+        'order': order,
+        'products': products
     }
     return render(request, "order/order_details.html", context)
 

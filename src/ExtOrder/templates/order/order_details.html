@@ -23,13 +23,11 @@
 
     <br style="clear:both" />
     <div style="margin-left:40px; text-align: left" >
-            <b>Produkty:</b><br></br>
-            {% for order, product in orders %}
-            {% for product in product %}
-                         -  {{ product.name }} <br/>
-                    {% endfor %}
-            {% endfor %}
-        </div>
+        <b>Produkty:</b><br></br>
+        {% for product in products %}
+             -  {{ product.name }} <br/>
+        {% endfor %}
+    </div>
 </div>
 <div style="clear:both;"></div>
 {% endblock %}

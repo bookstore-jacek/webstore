@@ -3,4 +3,25 @@
 {% block back %}<input type=button value="Wstecz" onClick="javascript:history.go(-1);">{% endblock %}
 
 {% block content %}
+<div class="customerlistview">
+        <h4>Klienci</h4>
+        <nav class="orderlistnav">
+            <ul>
+                {% for customer, all, pending in customers %}
+                <li>
+                    #{{ customer.id }} - {{ customer.first_name }} {{ customer.last_name }}
+                    <br/>
+                     - Nr telefonu: {{ customer.phone }} <br/>
+                    {% if customer.email is not None %}
+                         - Adres email: {{ customer.email }} <br/>
+                    {% endif %}
+                     - Wszystkich zamówień: {{ all }} <br/>
+                     - Niezakończonych: {{ pending }} <br/>
+                </li> <br/>
+                {% empty %}
+                    <li>Brak klientów</li>
+                {% endfor %}
+            </ul>
+        </nav >
+    </div>
 {% endblock %}

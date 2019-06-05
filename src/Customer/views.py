@@ -22,12 +22,3 @@ def add_customer_view(request):
     }
     return render(request, "customer/add_customer.html", context)
 
-def add_product_view(request):
-    form = ProductForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        form=CustomerForm()   
-    context={
-        "form": form
-    }
-    return render(request, "product/add_product.html", context)

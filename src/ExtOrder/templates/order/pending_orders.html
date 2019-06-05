@@ -3,5 +3,22 @@
 {% block back %}<input type=button value="Wstecz" onClick="javascript:history.go(-1);">{% endblock %}
 
 {% block content %}
-
+<div class="orderlistview">
+        <h4>Aktualne zamówienia</h4>
+        <nav class="orderlistnav">
+            <ul>
+                {% for order, products in orders %}
+                <li>
+                    #{{ order.id }} - {{ order.customer.first_name }} {{ order.customer.last_name }} --- Złożone: {{ order.submitted|date:"d.m.Y H:i" }}
+                    <br/>
+                    {% for product in products %}
+                    - {{ product.name }} <br/>
+                    {% endfor %}
+                </li> <br/>
+                {% empty %}
+                    <li>Brak niezakończonych zamówień</li>
+                {% endfor %}
+            </ul>
+        </nav >
+    </div>
 {% endblock %}

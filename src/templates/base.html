@@ -3,33 +3,30 @@
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	
-	<title>Księgarnia Jacek</title>
-	
-	<meta name="description" content="Oficjalna strona najlepszej polskiej księgarni. Sprawdź asortyment i zarządzaj zamówieniami!" />
-	<meta name="keywords" content="książki, księgarnia, Jacek" />
-	
-	<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Księgarnia Jacek</title>
+
+    <meta name="description" content="Oficjalna strona najlepszej polskiej księgarni. Sprawdź asortyment i zarządzaj zamówieniami!" />
+    <meta name="keywords" content="książki, księgarnia, Jacek" />
+
+    <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" />
 </head>
 <body>
     <div class="bg">
         <div id="container">
-            {% block left_box %}
-            {% endblock %}
-
-            <div id="content">
-                <div id="logo">
-                    <h2>2019&copy; Księgarnia Jacek</h2>
-                </div>
-                {% block back %}{% endblock %}
-
-                <br style="clear:both" />
-                {% block box %}
-                {% endblock %}
-                <div style="clear:both;"></div>
+            {% block left_box %}{% endblock %}
+                  
+            <div id="logo">
+                <h2>2019&copy; Księgarnia Jacek</h2>
             </div>
+
+            {% block back %}{% endblock %}
+            <br style="clear:both" />
+
+            {% block box %}{% endblock %}
+            <div style="clear:both;"></div>
         </div>
     </div>
 </body>

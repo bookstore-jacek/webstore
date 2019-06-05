@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block left_box %}
-<div class="side_tile">
+    <div class="side_tile">
         <h3>Bestseller!</h3> <br style="clear:both" />
         <img src="{% static 'ostr.jpg' %}" />
     </div>
@@ -13,29 +13,29 @@
 {% endblock %}
 
 {% block box %}
-<a href="/znajdz-ksiazke/">
-    <div class="tile2"> 
-        <div ID="vertical_all"><h3>Znajdź książkę</h3></div>
-    </div>
-</a>
+    <a href="/znajdz-ksiazke/">
+        <div class="tile2"> 
+            <div ID="vertical_all"><h3>Znajdź książkę</h3></div>
+        </div>
+    </a>
 
-<a href="/sprawdz-status/">
-    <div class="tile2">
-        <div ID="vertical_all"><h3>Sprawdź status zamówienia</h3></div>
-    </div>
-</a>
+    <a href="/sprawdz-status/">
+        <div class="tile2">
+            <div ID="vertical_all"><h3>Sprawdź status zamówienia</h3></div>
+        </div>
+    </a>
 
-<br style="clear:both" />
+    <br style="clear:both" />
 
-<a href="/zamowienia/">
-    <div class="tile1"> 
-        <div ID="vertical_all"><h3>Twoje zamówienia</h3></div>
-    </div>
-</a>
+    <a href="/zamowienia/">
+        <div class="tile1"> 
+            <div ID="vertical_all"><h3>Twoje zamówienia</h3></div>
+        </div>
+    </a>
 
-<a href="/kontakt/">
-    <div class="tile1">
-        <div ID="vertical_all"><h3>Kontakt</h3></div>
-    </div>
-</a>
+    <a href="/kontakt/">
+        <div class="tile1">
+            <div ID="vertical_all"><h3>Kontakt</h3></div>
+        </div>
+    </a>
 {% endblock %}

@@ -72,16 +72,18 @@
          <th>Nazwa produktu</th>
          <th>Bieżąca ilość</th>
          <th>Próg dostępności</th>
+         <th>Ilość</th>
        </tr>
      </thead>
      <tbody>
-       {% for product in products %}
+        {% for prod, value in order %}
          <tr>
-           <td>{{ product.name }}</td>
-           <td>{{ product.quantity }}</td>
-           <td>{{ product.threshold }}</td>
+           <td>{{ prod.name }}</td>
+           <td>{{ prod.quantity }}</td>
+           <td>{{ prod.threshold }}</td>
+           <td>{{ prod.value }}</td>
          </tr>
-       {% endfor %}    
+       {% endfor %}   
      </tbody>
    </table>
  </body>

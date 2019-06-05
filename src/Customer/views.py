@@ -9,9 +9,6 @@ def customers_view(request, *args, **kwargs):
 def personal_orders_view(request, *args, **kwargs):
     return render(request, "customer/personal_orders.html", {})
 
-def account_view(request, *args, **kwargs):
-    return render(request, "customer/account.html", {})
-
 def add_customer_view(request):
     form = CustomerForm(request.POST or None)
     if form.is_valid():
@@ -21,4 +18,3 @@ def add_customer_view(request):
         "form": form
     }
     return render(request, "customer/add_customer.html", context)
-

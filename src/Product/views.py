@@ -48,7 +48,7 @@ def html_to_pdf_view(request):
             value += internal[key]
         order += [(Product.objects.get(id=int(key)), value)]
 
-    html_string = render_to_string('product/zamowienie.html', {
+    html_string = render_to_string('product/bulk_order.html', {
         'actual_date_time': now.strftime("%d.%m.%Y %H:%M"),
         'order': order
     })

@@ -12,3 +12,6 @@ def add_customer_view(request, *args, **kwargs):
 
 def update_db_view(request, *args, **kwargs):
     return render(request, "update_db.html", {})
+
+def contact_view(request, *args, **kwargs):
+    return render(request, "contact.html", {})

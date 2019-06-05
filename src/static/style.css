@@ -73,7 +73,7 @@ img
 	margin-bottom: 50px;
 	font-family: 'Josefin Sans', sans-serif;
 	font-size: 15px;
-	text-align: right;
+	text-align: center;
 	float: left;
 }
 
@@ -131,4 +131,25 @@ a.tilelinkhtml5
 #vertical_all {
     display: table-cell;
     vertical-align: middle;
+}
+
+.contact{
+	float:left;
+	border-radius: 25px;
+	/* margin: 10px; */
+	width: 90%;
+	height: 80%;
+	background-color: rgba(255, 255, 255, 0.8);
+	text-align: center;
+	display: table;
+}
+
+.map_tile
+{
+	padding-top: 14px;
+	width: 345px;
+	height: 598px;
+	margin: 10px;
+	text-align: center;
+	float: left;
 }

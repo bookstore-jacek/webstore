@@ -16,13 +16,14 @@
 <body>
     <div class="bg">
         <div id="container">
-                {% block left_box %}
-                {% endblock %}
+            {% block left_box %}
+            {% endblock %}
 
             <div id="content">
                 <div id="logo">
                     <h2>2019&copy; Księgarnia Jacek</h2>
                 </div>
+                {% block back %}{% endblock %}
 
                 <br style="clear:both" />
                 {% block box %}

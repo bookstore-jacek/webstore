@@ -4,7 +4,7 @@ from Customer.models import Customer
 from Product.models import Product
 
 class OrderSearchForm(forms.Form):
-    user_input = forms.CharField(label='', required=True,  widget=forms.TextInput(attrs={ "placeholder":"Wyszukaj frazę", "class":"input_field"}))
+    user_input = forms.CharField(label='', required=False,  widget=forms.TextInput(attrs={ "placeholder":"Wyszukaj frazę", "class":"input_field"}))
     status     = forms.ChoiceField(choices=(('all',    'Wszystkie'),
                                            ('unfinished', 'Niezakończone'),
                                            ('finished', 'Zakończone'),

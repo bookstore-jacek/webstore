@@ -2,4 +2,25 @@
 
 {% block box %}<input type=button value="Wstecz" onClick="javascript:history.go(-1);">{% endblock %}
 
-{% block content %}{% endblock %}
+{% block content %}
+<div class="customerlistview">
+    <h4>Znajdź książkę</h4>
+    <div id="vertical_all">
+        <form action='.' method='POST'>{% csrf_token %}
+            {{ form.as_p }}
+            <input type='submit' class="button" value='Wyszukaj' />
+        </form>
+    </div>
+    <nav class="orderlistnav">
+        <ul>
+            {% for prod in products %}
+            <li>
+                {{ prod.name }} -- {{ prod.quantity }} na stanie
+            </li> <br/>
+            {% empty %}
+                <li>Nieznaloziono żadnych książek</li>
+            {% endfor %}
+        </ul>
+    </nav >
+</div>
+{% endblock %}

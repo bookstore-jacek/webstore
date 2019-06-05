@@ -1,26 +1,40 @@
 from django.shortcuts import render
-from ExtOrder.models import ExtOrder as Order
-from OrderedProduct.models import OrderedProduct
-from Product.models import Product
-from Customer.forms import CustomerForm
-from Customer.models import Customer
-
-from .forms import ProductForm
-from datetime import datetime
-now = datetime.now()
-
-from weasyprint import HTML, CSS
 from django.template.loader import get_template
 from django.http import HttpResponse
 from django.views.generic import View
 from django.core.files.storage import FileSystemStorage
 from django.template.loader import render_to_string
-from weasyprint import HTML
+
+
+from ExtOrder.models import ExtOrder as Order
+from OrderedProduct.models import OrderedProduct
+from Product.models import Product
+from .forms import ProductForm, ProductSearchForm
+from .utils import sort_id, find_products
+
+from weasyprint import HTML, CSS
 from collections import Counter
+from datetime import datetime
 
 # Create your views here.
 def find_book_view(request, *args, **kwargs):
-    return render(request, "product/find_book.html", {})
+    if request.method == 'POST':
+        form = ProductSearchForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data.get('user_input')
+            products = find_products(data)
+            form = ProductSearchForm()
+        else:
+            products = list(Product.objects.all())
+    else:
+        form = ProductSearchForm()
+        products = list(Product.objects.all())
+
+    context = {
+        'form' : form,
+        'products': products
+    }
+    return render(request, "product/find_book.html", context)
 
 
 def add_product_view(request):
@@ -49,7 +63,7 @@ def html_to_pdf_view(request):
         order += [(Product.objects.get(id=int(key)), value)]
 
     html_string = render_to_string('product/bulk_order.html', {
-        'actual_date_time': now.strftime("%d.%m.%Y %H:%M"),
+        'actual_date_time': now().strftime("%d.%m.%Y %H:%M"),
         'order': order
     })
 

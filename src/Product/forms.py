@@ -1,6 +1,10 @@
 from django import forms   
 from .models import Product
 
+class ProductSearchForm(forms.Form):
+    user_input = forms.CharField(label='', required=False, widget=forms.TextInput(attrs={ "placeholder":"Wpisz frazę", "class":"input_field"}))
+
+
 class ProductForm(forms.ModelForm):
     name        =forms.CharField(label='', required=True, widget=forms.TextInput(attrs={ "placeholder":"Nazwa produktu *", "class":"input_field"}))
     quantity    =forms.CharField(label='', required=False, widget=forms.NumberInput(attrs={ "placeholder":"Aktualna ilość", "class":"input_field"}))

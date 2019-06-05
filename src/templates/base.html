@@ -15,20 +15,21 @@
 </head>
 
 <body>
-        <div class="bg">
-            <div id="container">
-                <div id="content">
-                    <div id="logo">
-                        <h2>2019&copy; Księgarnia Jacek</h2>
-                    </div>
-    
-                    {% block back %}{% endblock %}
-    
-                    {% block content %}{% endblock %}
-                    
-                    <br style="clear:both" />
-    
+    <div class="bg">
+        <div id="container">
+            <div id="content">
+                <div id="logo">
+                    <h2>2019&copy; Księgarnia Jacek</h2>
                 </div>
+
+                {% block back %}{% endblock %}
+
+                <br style="clear:both"/>
+
+                {% block content %}{% endblock %}
+                
+                <div style="clear:both"></div>
             </div>
         </div>
-    </body>
+    </div>
+</body>

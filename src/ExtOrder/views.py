@@ -4,7 +4,7 @@ from django.db.models.functions import Now
 
 from .models import ExtOrder as Order
 from .forms import OrderForm, OrderSearchForm
-from .utils import find_orders, attach_products, sort_id
+from .utils import find_orders, attach_products, sort_id, filter_orders
 
 from Product.models import Product
 from Customer.models import Customer
@@ -17,17 +17,20 @@ def find_order_view(request, *args, **kwargs):
         if form.is_valid():
             data = form.cleaned_data.get('user_input')
             orders = find_orders(data)
+            orders = filter_orders(orders, form.cleaned_data.get('status'))
             form = OrderSearchForm()
         else:
-            orders = list(Customer.objects.all())
+            orders = list(Order.objects.all())
     else:
         form = OrderSearchForm()
-        orders = list(Customer.objects.all())
+        orders = list(Order.objects.all())
+    print(orders)
 
     context={
+        "form": form,
         "orders": attach_products(orders)
     }
-    return render(request, "order/add_order.html", context)
+    return render(request, "order/find_order.html", context)
 
 
 def add_order_view(request, *args, **kwargs):
@@ -68,7 +71,6 @@ def pending_orders_view(request, *args, **kwargs):
     not_cancelled_orders = set(Order.objects.filter(cancelled__isnull=True))
     orders = list(not_cancelled_orders & not_finished_orders)
     orders.sort(key=sort_id)
-    print(orders)
     ord_products = [OrderedProduct.objects.filter(order_id=order.id) for order in orders]
     products = []
     for ord_prod_filtered in ord_products:

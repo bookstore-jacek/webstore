@@ -26,7 +26,7 @@ def customers_view(request, *args, **kwargs):
     ]
     
     context = {
-        "form" : form,
+        'form' : form,
         'customers': zip(
             customers,
             all_orders_per_cust,

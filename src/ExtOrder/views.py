@@ -9,6 +9,8 @@ from .utils import find_orders, attach_products, sort_id, filter_orders
 from Product.models import Product
 from Customer.models import Customer
 from OrderedProduct.models import OrderedProduct
+
+from qr_code.qrcode.utils import ContactDetail, WifiConfig, Coordinates, QRCodeOptions
 # Create your views here.
 
 def find_order_view(request, *args, **kwargs):
@@ -17,6 +19,7 @@ def find_order_view(request, *args, **kwargs):
         if form.is_valid():
             data = form.cleaned_data.get('user_input')
             orders = find_orders(data)
+            orders.sort(key=sort_id)
             orders = filter_orders(orders, form.cleaned_data.get('status'))
             form = OrderSearchForm()
         else:
@@ -81,7 +84,24 @@ def pending_orders_view(request, *args, **kwargs):
     }
     return render(request, "order/pending_orders.html", context)
 
-
-
 def check_status_view(request, *args, **kwargs):
     return render(request, "order/check_status.html", {})
+
+def detail_view(request, id):
+    obj = get_object_or_404(Order, id=id)
+    orders = list(Order.objects.all())
+    ord_products = [OrderedProduct.objects.filter(order_id=order.id) for order in orders]
+    products = []    
+    context = {
+        'order': obj,
+        'product': products
+    }
+    return render(request, "order/order_details.html", context)
+
+def edit_view(request, id):
+    obj = get_object_or_404(Order, id=id)
+
+    context = {
+        'order': obj
+    }
+    return render(request, "order/edit_order.html", context)

@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
-{% block box %}<input type=button value="Wstecz" onClick="javascript:history.go(-1);">{% endblock %}
+{% block back %}
+<input type=button value="Wstecz" onClick="javascript:history.go(-1);"/>
+{% endblock %}
 
 {% block content %}
 <div class="customerlistview">

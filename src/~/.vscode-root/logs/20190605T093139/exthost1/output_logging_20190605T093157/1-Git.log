@@ -1,0 +1,548 @@
+Looking for git in: git
+Using git 2.17.1 from git
+> git rev-parse --show-toplevel
+> git config --get commit.template
+Open repository: /home/zwolin/django
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name master@{u}
+> git rev-list --left-right master...refs/remotes/origin/master
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git show :src/bookstore/urls.py
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name master@{u}
+> git rev-list --left-right master...refs/remotes/origin/master
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git show :src/templates/base.html
+> git show :src/pages/templates/home.html
+> git show :src/pages/views.py
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git show :src/Customer/views.py
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git show :src/Product/views.py
+> git show :src/Customer/views.py
+> git show :src/bookstore/urls.py
+> git show :src/Customer/views.py
+> git show :src/pages/templates/home.html
+> git show :src/Customer/templates/customer/customers.html
+> git show :src/Customer/templates/customer/personal_orders.html
+> git show :src/Customer/templates/customer/add_customer.html
+> git show :src/Customer/templates/customer/contact.html
+> git ls-files --stage -- src/Customer/templates/customer/
+> git show :src/templates/base.html
+> git show :src/Customer/templates/customer/contact.html
+> git ls-files --stage -- src/Customer/templates/customer/
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git check-ignore -z --stdin
+> git show :src/Customer/views.py
+> git show :src/pages/views.py
+> git show :src/bookstore/urls.py
+> git show :src/Customer/views.py
+> git show :src/pages/views.py
+> git show :src/templates/base.html
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/templates/base.html
+> git show :src/pages/templates/home.html
+> git show :src/templates/base.html
+> git show :src/pages/templates/home.html
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/templates/base.html
+> git show :src/pages/templates/home.html
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/templates/base.html
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/templates/base.html
+> git show :src/pages/templates/home.html
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/templates/base.html
+> git show :src/pages/templates/home.html
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/templates/base.html
+> git show :src/pages/templates/home.html
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/templates/base.html
+> git show :src/pages/templates/home.html
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/pages/templates/home.html
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/pages/templates/home.html
+> git check-ignore -z --stdin
+> git show :src/Product/views.py
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/templates/base.html
+> git show :src/pages/templates/home.html
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/templates/base.html
+> git show :src/pages/templates/home.html
+> git show :src/templates/base.html
+> git check-ignore -z --stdin
+> git show :src/static/style.css
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/pages/templates/home.html
+> git show :src/templates/base.html
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/pages/templates/home.html
+> git show :src/static/style.css
+> git show :src/Customer/views.py
+> git show :src/static/style.css
+> git show :src/Customer/views.py
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/static/style.css
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/static/style.css
+> git show :src/static/panel_style.css
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/Product/templates/product/add_product.html
+> git show :src/pages/templates/home.html
+> git show :src/templates/base.html
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/pages/templates/home.html
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/static/style.css
+> git show :src/static/panel_style.css
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/static/style.css
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/static/style.css
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/static/style.css
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/static/style.css
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/templates/base.html
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/static/style.css
+> git show :src/Customer/views.py
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/static/style.css
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/static/style.css
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/templates/base.html
+> git show :src/static/style.css
+> git show :src/templates/base.html
+> git show :src/static/style.css
+> git show :src/templates/base.html
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/static/style.css
+> git show :src/Customer/views.py
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/static/style.css
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/templates/base.html
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/static/style.css
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/pages/templates/home.html
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/pages/templates/home.html
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/static/style.css
+> git show :src/pages/templates/contact.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/Product/templates/product/add_product.html
+> git show :src/templates/panel_base.html
+> git show :src/Product/templates/product/add_product.html
+> git show :src/templates/base.html
+> git show :src/templates/panel_base.html
+> git show :src/Product/templates/product/add_product.html
+> git show :src/pages/templates/contact.html
+> git show :src/pages/templates/home.html
+> git show :src/static/style.css
+> git show :src/templates/base.html
+> git show :src/static/style.css
+> git show :src/templates/base.html
+> git show :src/templates/panel_base.html
+> git show :src/static/style.css
+> git show :src/Product/templates/product/add_product.html
+> git show :src/pages/templates/contact.html
+> git show :src/templates/panel_base.html
+> git show :src/templates/base.html
+> git show :src/pages/templates/contact.html
+> git show :src/static/panel_style.css
+> git show :src/static/style.css
+> git show :src/templates/panel_base.html
+> git show :src/templates/base.html
+> git show :src/pages/templates/contact.html
+> git show :src/templates/base.html
+> git show :src/pages/templates/contact.html
+> git show :src/templates/base.html
+> git show :src/pages/templates/contact.html
+> git show :src/pages/templates/home.html
+> git show :src/templates/base.html
+> git show :src/static/style.css
+> git show :src/static/panel_style.css
+> git show :src/templates/base.html
+> git show :src/static/style.css
+> git show :src/templates/base.html
+> git show :src/pages/templates/contact.html
+> git show :src/templates/base.html
+> git show :src/static/style.css
+> git show :src/pages/templates/contact.html
+> git show :src/static/style.css
+> git show :src/templates/base.html
+> git show :src/pages/templates/contact.html
+> git show :src/pages/templates/home.html
+> git show :src/templates/base.html
+> git show :src/static/style.css
+> git show :src/pages/templates/contact.html
+> git show :src/templates/base.html
+> git show :src/static/style.css
+> git show :src/pages/templates/contact.html
+> git show :src/static/style.css
+> git show :src/pages/templates/home.html
+> git show :src/templates/base.html
+> git show :src/pages/templates/home.html
+> git show :src/templates/base.html
+> git show :src/pages/templates/home.html
+> git show :src/templates/base.html
+> git show :src/pages/templates/home.html
+> git show :src/templates/base.html
+> git show :src/pages/templates/home.html
+> git show :src/templates/base.html
+> git show :src/pages/templates/home.html
+> git show :src/pages/templates/contact.html
+> git show :src/pages/templates/home.html
+> git show :src/pages/templates/contact.html
+> git show :src/pages/templates/home.html
+> git show :src/static/style.css
+> git show :src/pages/templates/home.html
+> git show :src/pages/templates/contact.html
+> git show :src/static/style.css
+> git show :src/pages/templates/home.html
+> git show :src/pages/templates/contact.html
+> git show :src/static/style.css
+> git show :src/pages/templates/contact.html
+> git show :src/pages/templates/home.html
+> git show :src/templates/base.html
+> git show :src/pages/templates/home.html
+> git show :src/pages/templates/contact.html
+> git show :src/templates/base.html
+> git show :src/pages/templates/home.html
+> git show :src/pages/templates/contact.html
+> git show :src/static/style.css
+> git show :src/pages/templates/home.html
+> git show :src/static/style.css
+> git show :src/pages/templates/contact.html
+> git show :src/pages/templates/home.html
+> git show :src/pages/templates/contact.html
+> git show :src/pages/templates/home.html
+> git show :src/templates/base.html
+> git show :src/Product/views.py
+> git check-ignore -z --stdin
+> git show :src/ExtOrder/models.py
+> git show :src/bookstore/urls.py
+> git show :src/pages/templates/order_details.html
+> git ls-files --stage -- src/pages/templates/
+> git check-ignore -z --stdin
+> git show :src/Customer/templates/customer/add_customer.html
+> git show :src/pages/templates/order_details.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/Product/views.py
+> git show :src/templates/base.html
+> git show :src/static/style.css
+> git show :src/Product/views.py
+> git show :src/pages/templates/order_details.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/ExtOrder/models.py
+> git show :src/static/style.css
+> git show :src/pages/templates/home.html
+> git show :src/static/style.css
+> git show :src/pages/templates/home.html
+> git show :src/templates/base.html
+> git show :src/pages/templates/home.html
+> git show :src/static/style.css
+> git show :src/pages/templates/home.html
+> git show :src/templates/base.html
+> git show :src/static/style.css
+> git show :src/pages/templates/home.html
+> git show :src/templates/base.html
+> git show :src/pages/templates/home.html
+> git show :src/pages/templates/contact.html
+> git show :src/static/style.css
+> git show :src/pages/templates/contact.html
+> git show :src/templates/base.html
+> git show :src/pages/templates/contact.html
+> git show :src/templates/base.html
+> git show :src/pages/templates/home.html
+> git show :src/ExtOrder/models.py
+> git show :src/static/style.css
+> git show :src/pages/templates/home.html
+> git show :src/ExtOrder/models.py
+> git show :src/static/style.css
+> git show :src/ExtOrder/models.py
+> git check-ignore -z --stdin
+> git show :src/pages/templates/order_details.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/ExtOrder/models.py
+> git show :src/Customer/views.py
+> git show :src/ExtOrder/urls.py
+> git ls-files --stage -- src/ExtOrder/
+> git check-ignore -z --stdin
+> git show :src/ExtOrder/models.py
+> git show :src/ExtOrder/urls.py
+> git ls-files --stage -- src/ExtOrder/
+> git show :src/bookstore/urls.py
+> git show :src/ExtOrder/models.py
+> git show :src/ExtOrder/urls.py
+> git ls-files --stage -- src/ExtOrder/
+> git show :src/ExtOrder/models.py
+> git show :src/ExtOrder/urls.py
+> git ls-files --stage -- src/ExtOrder/
+> git show :src/ExtOrder/models.py
+> git show :src/Customer/views.py
+> git show :src/ExtOrder/models.py
+> git show :src/Product/views.py
+> git show :src/ExtOrder/models.py
+> git show :src/ExtOrder/templates/order/pending_orders.html
+> git show :src/ExtOrder/views.py
+> git show :src/ExtOrder/urls.py
+> git ls-files --stage -- src/ExtOrder/
+> git show :src/ExtOrder/views.py
+> git show :src/pages/templates/details.html
+> git ls-files --stage -- src/pages/templates/
+> git check-ignore -z --stdin
+> git show :src/pages/templates/contact.html
+> git show :src/pages/templates/details.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/ExtOrder/templates/order/all_orders.html
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name master@{u}
+> git rev-list --left-right master...refs/remotes/origin/master
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name master@{u}
+> git rev-list --left-right master...refs/remotes/origin/master
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git show :src/ExtOrder/views.py
+> git show :src/pages/templates/details.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/ExtOrder/models.py
+> git show :src/bookstore/urls.py
+> git show :src/ExtOrder/urls.py
+> git ls-files --stage -- src/ExtOrder/
+> git show :src/bookstore/urls.py
+> git show :src/ExtOrder/views.py
+> git show :src/bookstore/urls.py
+> git show :src/ExtOrder/urls.py
+> git ls-files --stage -- src/ExtOrder/
+> git show :src/pages/templates/contact.html
+> git show :src/ExtOrder/views.py
+> git show :src/pages/templates/details.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/ExtOrder/views.py
+> git show :src/ExtOrder/urls.py
+> git ls-files --stage -- src/ExtOrder/
+> git show :src/ExtOrder/views.py
+> git show :src/ExtOrder/urls.py
+> git ls-files --stage -- src/ExtOrder/
+> git show :src/templates/base.html
+> git show :src/templates/panel_base.html
+> git show :src/templates/base.html
+> git show :src/templates/panel_base.html
+> git show :src/templates/base.html
+> git show :src/templates/panel_base.html
+> git show :src/templates/base.html
+> git show :src/clcache
+> git show :src/templates/panel_base.html
+> git show :src/pages/templates/details.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/bookstore/urls.py
+> git show :src/bookstore/settings.py
+> git show :src/ExtOrder/apps.py
+> git show :src/ExtOrder/forms.py
+> git show :src/ExtOrder/models.py
+> git show :src/ExtOrder/views.py
+> git show :src/OrderedProduct/models.py
+> git show :src/Product/views.py
+> git show :src/ExtOrder/views.py
+> git show :src/pages/templates/details.html
+> git ls-files --stage -- src/pages/templates/
+> git show :src/ExtOrder/views.py
+> git show :src/ExtOrder/urls.py
+> git ls-files --stage -- src/ExtOrder/
+> git show :src/Product/views.py
+> git show :src/ExtOrder/views.py
+> git check-ignore -z --stdin
+> git show :src/Product/views.py
+> git show :src/ExtOrder/views.py
+> git show :src/ExtOrder/urls.py
+> git ls-files --stage -- src/ExtOrder/
+> git show :src/ExtOrder/views.py
+> git show :src/ExtOrder/templates/order/details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/views.py
+> git show :src/ExtOrder/templates/order/edit.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git show :src/ExtOrder/templates/order/edit_order.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git check-ignore -z --stdin
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/edit_order.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/views.py
+> git show :src/ExtOrder/templates/order/all_orders.html
+> git show :src/ExtOrder/templates/order/all_orders.html
+> git show :src/pages/templates/contact.html
+> git show :src/templates/base.html
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/templates/base.html
+> git show :src/Product/templates/product/add_product.html
+> git show :src/ExtOrder/templates/order/edit_order.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/all_orders.html
+> git show :src/pages/templates/panel_home.html
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/views.py
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/views.py
+> git show :src/pages/templates/contact.html
+> git show :src/Product/templates/product/add_product.html
+> git show :src/pages/templates/contact.html
+> git show :src/Product/templates/product/add_product.html
+> git show :src/templates/base.html
+> git show :src/pages/templates/contact.html
+> git show :src/Product/templates/product/add_product.html
+> git show :src/pages/templates/contact.html
+> git show :src/Product/templates/product/add_product.html
+> git show :src/pages/templates/contact.html
+> git show :src/Product/templates/product/add_product.html
+> git show :src/pages/templates/contact.html
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/all_orders.html
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/all_orders.html
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/templates/order/all_orders.html
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/views.py
+> git show :src/Product/templates/product/add_product.html
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/views.py
+> git show :src/Product/templates/product/add_product.html
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/views.py
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/ExtOrder/views.py
+> git show :src/ExtOrder/templates/order/order_details.html
+> git ls-files --stage -- src/ExtOrder/templates/order/
+> git show :src/manage.py
+> git show :src/~/.vscode-root/CachedExtensions/builtin
+> git ls-files --stage -- src/~/.vscode-root/CachedExtensions/
+> git show :src/bookstore/settings.py
+> git show :src/Customer/templates/customer/customers.html

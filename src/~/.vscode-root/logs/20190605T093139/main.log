@@ -1,0 +1,21 @@
+[2019-06-05 09:31:39.746] [main] [info] update#setState idle
+[2019-06-05 09:32:09.751] [main] [info] update#setState checking for updates
+[2019-06-05 09:32:09.767] [main] [error] Error: net::ERR_NAME_NOT_RESOLVED
+[2019-06-05 09:32:09.767] [main] [info] update#setState idle
+[2019-06-05 10:32:09.774] [main] [info] update#setState checking for updates
+[2019-06-05 10:32:10.502] [main] [info] update#setState idle
+[2019-06-05 12:54:09.692] [main] [info] update#setState checking for updates
+[2019-06-05 12:54:09.698] [main] [error] Error: net::ERR_NAME_NOT_RESOLVED
+[2019-06-05 12:54:09.698] [main] [info] update#setState idle
+[2019-06-05 13:54:09.724] [main] [info] update#setState checking for updates
+[2019-06-05 13:54:10.110] [main] [info] update#setState idle
+[2019-06-05 14:54:09.757] [main] [info] update#setState checking for updates
+[2019-06-05 14:54:10.237] [main] [info] update#setState idle
+[2019-06-05 15:54:09.822] [main] [info] update#setState checking for updates
+[2019-06-05 15:54:10.232] [main] [info] update#setState idle
+[2019-06-05 16:54:09.854] [main] [info] update#setState checking for updates
+[2019-06-05 16:54:10.180] [main] [info] update#setState idle
+[2019-06-05 17:54:09.877] [main] [info] update#setState checking for updates
+[2019-06-05 17:54:10.977] [main] [info] update#setState idle
+[2019-06-05 21:26:10.941] [main] [info] update#setState checking for updates
+[2019-06-05 21:26:11.182] [main] [info] update#setState available for download

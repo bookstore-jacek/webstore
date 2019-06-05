@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import View
 from django.db.models.functions import Now
 
@@ -83,3 +83,20 @@ def pending_orders_view(request, *args, **kwargs):
 
 def check_status_view(request, *args, **kwargs):
     return render(request, "order/check_status.html", {})
+
+def detail_view(request, id):
+    obj = get_object_or_404(Order, id=id)
+    product=Product.objects.all()
+    context = {
+        'order': obj,
+        'product': product
+    }
+    return render(request, "order/order_details.html", context)
+
+def edit_view(request, id):
+    obj = get_object_or_404(Order, id=id)
+
+    context = {
+        'order': obj
+    }
+    return render(request, "order/edit_order.html", context)

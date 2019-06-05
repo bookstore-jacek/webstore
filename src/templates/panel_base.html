@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load qr_code %}
 
 <!DOCTYPE HTML>
 <html lang="pl">
@@ -17,8 +18,8 @@
     <div class="bg">
         <div id="container">
             <div id="content">
-                <div id="logo">
-                    <h2>2019&copy; Księgarnia Jacek</h2>
+                <div id="logo"><a href="http://127.0.0.1:8000/panel/">
+                    <h2>2019&copy; Księgarnia Jacek</h2></a>
                 </div>
 
                 {% block back %}{% endblock %}

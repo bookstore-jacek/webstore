@@ -271,7 +271,7 @@ button[type=button] {
 	border-radius: 20px;
 	padding: 20px;
 	font-size: 18px;
-	background-color:rgba(68, 196, 68, 0.8);
+	background-color:rgba(197,90,17,0.8);
 	height: 75%;
 }
 
@@ -285,7 +285,7 @@ nav ul{
 {
 	border-radius: 20px;
 	padding: 20px;
-	background-color:rgba(68, 114, 196, 0.8);
+	background-color:rgba(84, 130, 53, 0.8);
 	height: 75%;
 }
 
@@ -349,6 +349,17 @@ input[type=button]:hover {
 .circle {
 	background: rgb(243, 243, 243);
 	border-radius: 100%;
+	height: 150px;
+	width: 150px;
+	color: black;
+	display: table;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+  }
+
+  .rectangle {
+	background: rgb(243, 243, 243);
 	height: 150px;
 	width: 150px;
 	color: black;

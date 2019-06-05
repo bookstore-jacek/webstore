@@ -9,3 +9,4 @@ src/*/migrations
 .vscode
 */.vscode
 */*/.vscode
+~

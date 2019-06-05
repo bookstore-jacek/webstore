@@ -546,3 +546,14 @@ Open repository: /home/zwolin/django
 > git ls-files --stage -- src/~/.vscode-root/CachedExtensions/
 > git show :src/bookstore/settings.py
 > git show :src/Customer/templates/customer/customers.html
+> git show :src/bookstore/settings.py
+> git show :src/Customer/templates/customer/customers.html
+> git show :src/ExtOrder/templates/order/order_details.html
+> git show :src/ExtOrder/templates/order/pending_orders.html
+> git show :src/ExtOrder/templates/order/all_orders.html
+> git show :src/ExtOrder/views.py
+> git show :src/ExtOrder/templates/order/pending_orders.html
+> git show :src/ExtOrder/views.py
+> git show :src/ExtOrder/urls.py
+> git show :src/ExtOrder/models.py
+> git show :src/ExtOrder/templates/order/pending_orders.html

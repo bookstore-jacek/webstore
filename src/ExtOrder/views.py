@@ -9,6 +9,8 @@ from .utils import find_orders, attach_products, sort_id
 from Product.models import Product
 from Customer.models import Customer
 from OrderedProduct.models import OrderedProduct
+
+from qr_code.qrcode.utils import ContactDetail, WifiConfig, Coordinates, QRCodeOptions
 # Create your views here.
 
 def find_order_view(request, *args, **kwargs):
@@ -86,10 +88,14 @@ def check_status_view(request, *args, **kwargs):
 
 def detail_view(request, id):
     obj = get_object_or_404(Order, id=id)
-    product=Product.objects.all()
+    orders = list(Order.objects.all())
+    ord_products = [OrderedProduct.objects.filter(order_id=order.id) for order in orders]
+    products = []    
     context = {
         'order': obj,
-        'product': product
+        'product': products,
+        # 'orders': orders,
+        
     }
     return render(request, "order/order_details.html", context)
 

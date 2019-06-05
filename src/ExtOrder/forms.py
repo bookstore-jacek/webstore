@@ -3,6 +3,13 @@ from .models import ExtOrder as Order
 from Customer.models import Customer
 from Product.models import Product
 
+class OrderSearchForm(forms.Form):
+    user_input = forms.CharField(label='', required=True,  widget=forms.TextInput(attrs={ "placeholder":"Wyszukaj frazę", "class":"input_field"}))
+    status     = forms.ChoiceField(choices=(('all',    'Wszystkie'),
+                                           ('unfinished', 'Niezakończone'),
+                                           ('finished', 'Zakończone'),
+                                           ('cancelled',  'Anulowane')))
+
 class OrderForm(forms.Form):
     phone     = forms.CharField(label='', required=True,  widget=forms.TextInput(attrs={ "placeholder":"Numer telefonu *",       "class":"input_field"}))
     product1  = forms.CharField(label='', required=True,  widget=forms.TextInput(attrs={ "placeholder":"Produkt *",              "class":"input_field"}))

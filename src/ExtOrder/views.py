@@ -3,13 +3,34 @@ from django.views import View
 from django.db.models.functions import Now
 
 from .models import ExtOrder as Order
-from .forms import OrderForm
+from .forms import OrderForm, OrderSearchForm
+from .utils import find_orders, attach_products, sort_id
+
 from Product.models import Product
 from Customer.models import Customer
 from OrderedProduct.models import OrderedProduct
 # Create your views here.
 
-def order_add_view(request, *args, **kwargs):
+def find_order_view(request, *args, **kwargs):
+    if request.method == 'POST':
+        form = OrderSearchForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data.get('user_input')
+            orders = find_orders(data)
+            form = OrderSearchForm()
+        else:
+            orders = list(Customer.objects.all())
+    else:
+        form = OrderSearchForm()
+        orders = list(Customer.objects.all())
+
+    context={
+        "orders": attach_products(orders)
+    }
+    return render(request, "order/add_order.html", context)
+
+
+def add_order_view(request, *args, **kwargs):
     if request.method == "POST":
         form = OrderForm(request.POST)
         if form.is_valid():
@@ -31,8 +52,6 @@ def order_add_view(request, *args, **kwargs):
 
 def all_orders_view(request, *args, **kwargs):
     orders = list(Order.objects.all())
-    def sort_id(val):
-        return val.id
     orders.sort(key=sort_id)
     ord_products = [OrderedProduct.objects.filter(order_id=order.id) for order in orders]
     products = []
@@ -48,8 +67,6 @@ def pending_orders_view(request, *args, **kwargs):
     not_finished_orders = set(Order.objects.filter(finished__isnull=True))
     not_cancelled_orders = set(Order.objects.filter(cancelled__isnull=True))
     orders = list(not_cancelled_orders & not_finished_orders)
-    def sort_id(val):
-        return val.id
     orders.sort(key=sort_id)
     print(orders)
     ord_products = [OrderedProduct.objects.filter(order_id=order.id) for order in orders]
@@ -63,8 +80,6 @@ def pending_orders_view(request, *args, **kwargs):
     return render(request, "order/pending_orders.html", context)
 
 
-def find_order_view(request, *args, **kwargs):
-    return render(request, "order/find_order.html", {})
 
 def check_status_view(request, *args, **kwargs):
     return render(request, "order/check_status.html", {})

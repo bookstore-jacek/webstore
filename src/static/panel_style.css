@@ -276,7 +276,7 @@ button[type=button] {
 }
 
 nav ul{
-	height: 360px;
+	height: 320px;
 	overflow: hidden;
 	overflow-y: scroll;
 }

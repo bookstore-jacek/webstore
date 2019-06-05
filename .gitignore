@@ -6,3 +6,6 @@ share/
 .plan.swp
 src/*/__pycache__
 src/*/migrations
+.vscode
+*/.vscode
+*/*/.vscode

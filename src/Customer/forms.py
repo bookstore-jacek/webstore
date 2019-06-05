@@ -1,6 +1,9 @@
 from django import forms   
 from .models import Customer
 
+class CustomerSearchForm(forms.Form):
+    user_input = forms.CharField(label='', required=False, widget=forms.TextInput(attrs={ "placeholder":"Wpisz frazę", "class":"input_field"}))
+
 class CustomerForm(forms.ModelForm):
     first_name =forms.CharField(label='', required=True, widget=forms.TextInput(attrs={ "placeholder":"Imię *", "class":"input_field"}))
     last_name  =forms.CharField(label='', required=True, widget=forms.TextInput(attrs={ "placeholder":"Nazwisko *", "class":"input_field"}))

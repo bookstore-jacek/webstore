@@ -48,6 +48,6 @@ urlpatterns = [
     path('panel/zaktualizuj-asortyment/', stock_update_view, name='stock_update'),
 
     #dynamic links:
-    path('zamowienie/', include('ExtOrder.urls')),
-    path('produkt/', include('Product.urls'))
+    path('panel/zamowienie/', include('ExtOrder.urls')),
+    path('panel/produkt/', include('Product.urls'))
 ]

@@ -20,7 +20,7 @@ CREATE TABLE customer(
         NOT NULL,
     email
         VARCHAR(30)
-        UNIQUE,
+        UNIQUE
 );
 
 CREATE TABLE ext_order(

@@ -16,7 +16,7 @@
     <nav class="orderlistnav">
         <ul style='width:700px; margin-left: 40px'>
             {% for prod in products %}
-            <li><a href='/produkt/{{prod.id}}/edytuj'>
+            <li><a href='/panel/produkt/{{prod.id}}/edytuj'>
                 {{ prod.name }} <div style='float:right'> Dostępnych: {{ prod.quantity }} Próg: {{ prod.threshold}}</div>
             </li> <br/>
             {% empty %}

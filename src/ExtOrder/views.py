@@ -3,7 +3,7 @@ from django.views import View
 from django.db.models.functions import Now
 
 from .models import ExtOrder as Order
-from .forms import OrderForm, OrderSearchForm, EditForm
+from .forms import OrderForm, OrderSearchForm, EditForm, FindForm
 from .utils import find_orders, attach_products, sort_id, filter_orders
 
 from Product.models import Product
@@ -61,39 +61,61 @@ def add_order_view(request, *args, **kwargs):
     }
     return render(request, "order/add_order.html", context)
 
-def check_status_view(request, *args, **kwargs):
-    return render(request, "order/check_status.html", {})
-
-# def detail_view(request, id):
-#     obj = get_object_or_404(Order, id=id)
-#     order, products = list(attach_products([obj]))[0]
-#     context = {
-#         'order': order,
-#         'products': products
-#     }
-#     return render(request, "order/order_details.html", context)
-
-def edit_view(request, id):
+def detail_view(request, id):
     obj = get_object_or_404(Order, id=id)
-    num = OrderedProduct.objects.filter(order_id=obj.id).count()
+    order, products = list(attach_products([obj]))[0]
+    ord_prods = list(OrderedProduct.objects.filter(order_id=obj.id))
+    products.sort(key=sort_id)
+    ord_prods.sort(key=sort_id)
+
     if request.method == 'POST':
-        form = EditForm(request.POST, num)
+        form = EditForm(request.POST)
         print(1)
         if form.is_valid():
-            print(2)
-            # data = form.cleaned_data
-            # if data.get('name'):
-            #     obj.name = data.get('name').capitalize()
-            # if data.get('qt'):
-            #     obj.quantity = data.get('qt')
-            # if data.get('th'):
-            #     obj.threshold = data.get('th')
-            # obj.save()
-            form = EditForm(None, num)
+            paid = form.cleaned_data.get('paid')
+            status = form.cleaned_data.get('status')
+            if status == 'cancelled' and order.cancelled is None and order.finished is None:
+                order.cancelled = Now()
+                order.paid = paid
+                order.save()
+                for prod in ord_prods:
+                    prod.cancelled = Now()
+                    prod.save()
+            elif status == 'finished' and order.cancelled is None and order.finished is None:
+                order.finished = Now()
+                order.paid = paid
+                order.save()
+                for prod in ord_prods:
+                    prod.finished = Now()
+                    prod.save()
+            form = EditForm()
     else:
-        form = EditForm(None, num)
+        form = EditForm()
+
     context = {
-        'order': obj,
-        'form': form
+        'order': order,
+        'products': zip(products, ord_prods),
+        "form": form
     }
-    return render(request, "order/edit_order.html", context)
+    return render(request, "order/order_details.html", context)
+
+def check_status_view(request, *args, **kwargs):
+    if request.method == 'POST':
+        form = FindForm(request.POST)
+        if form.is_valid():
+            order = form.cleaned_data.get('ord_id')
+            order, products = list(attach_products([order]))[0]
+            form = FindForm()
+        else:
+            order = ''
+            products = ''
+    else:
+        form = FindForm()
+        order = ''
+        products = ''
+    context = {
+        'form': form,
+        'order': order,
+        'products': products
+    }
+    return render(request, "order/check_status.html", context)

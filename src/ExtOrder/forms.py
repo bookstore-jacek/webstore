@@ -3,20 +3,36 @@ from .models import ExtOrder as Order
 from Customer.models import Customer
 from Product.models import Product
 
+class FindForm(forms.Form):
+    phone  = forms.CharField(label='', required=True,  widget=forms.TextInput(attrs={ "placeholder":"Podaj numer telefonu *",   "class":"input_field"}))
+    ord_id = forms.CharField(label='', required=True,  widget=forms.TextInput(attrs={ "placeholder":"Podaj numer zamowienia *", "class":"input_field"}))
+
+    def clean(self, *args, **kwargs):
+        phone = self.cleaned_data.get('phone')
+        ord_id = self.cleaned_data.get('ord_id')
+        if not (len(phone) == 9 or len(phone) == 12):
+            raise forms.ValidationError('Wprowadzony numer jest nieprawidłowy')
+        try:
+            matchcust = Customer.objects.get(phone=phone)
+        except Customer.DoesNotExist:
+            raise forms.ValidationError('Klient z podanym numerem nie istnieje')
+        try:
+            matchord = Order.objects.get(id=ord_id)
+        except Order.DoesNotExist:
+            raise forms.ValidationError('Brak zamówienia o podanym numerze')
+        if matchcust.id != matchord.customer_id:
+            raise forms.ValidationError('Zła kombinacja numerów')
+        else:
+            self.cleaned_data['phone'] = matchcust
+            self.cleaned_data['ord_id'] = matchord
+
 class EditForm(forms.Form):
-    def __init__(self, request, num, *args, **kwargs):
-        super(EditForm, self).__init__(*args, **kwargs)
-        self.fields['paid']   = forms.ChoiceField(choices=(('not_paid',    'Nieopłacone'),
-                                                           ('partly_paid', 'Wpłacono zaliczkę'),
-                                                           ('fully_paid',  'Opłacone')))
-        self.fields['status'] = forms.ChoiceField(choices=(('submitted',   'Złożone'),
-                                                           ('finished',    'Odebrane'),
-                                                           ('cancelled',   'Anulowane')))
-        for i in range(num):
-            self.fields[f'prod_status{i}'] = forms.ChoiceField(choices=(('ordered',     'Zamówione'),
-                                                                        ('collected',   'Gotowe'),
-                                                                        ('finished',    'Odebrane'),
-                                                                        ('cancelled',   'Anulowane')))
+    paid   = forms.ChoiceField(label='', choices=(('not_paid',    'Nieopłacone'),
+                                                  ('partly_paid', 'Wpłacono zaliczkę'),
+                                                  ('fully_paid',  'Opłacone')))
+    status = forms.ChoiceField(label='', choices=(('submitted',   'Złożone'),
+                                                  ('finished',    'Odebrane'),
+                                                  ('cancelled',   'Anulowane')))
 
 
 class OrderSearchForm(forms.Form):

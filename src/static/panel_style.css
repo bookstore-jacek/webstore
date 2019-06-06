@@ -329,6 +329,16 @@ nav ul{
 	height: 75%;
 }
 
+#l
+{
+	float: left;
+}
+
+#r
+{
+	float: right;
+}
+
 .order_col1
 {
 	float: left;

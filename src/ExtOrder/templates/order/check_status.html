@@ -1,3 +1,37 @@
-{% extends "base.html" %}
+{% extends "panel_base.html" %}
 
-{% block box %}{% endblock %}
+{% block back %}
+<input type=button value="Wstecz" onClick="javascript:history.go(-1);">
+{% endblock %}
+
+{% block content %}
+<div class="orderlistview">
+    <h4>Znajdź swoje zamówienie</h4>
+    <div id="vertical_all">
+        <form action='.' method='POST'>{% csrf_token %}
+            {{ form.as_table }}
+            <input type='submit' class="button" value='Wyszukaj' />
+        </form>
+    </div>
+    {% if order != '' %}
+    <br/><br/>
+        #{{ order.id }}
+        {% if order.finished is not None %}
+                --- Zamknięte: {{ order.finished|date:"d.m.Y H:i" }}
+        {% elif order.cancelled is not None %}
+                --- Anulowane: {{ order.cancelled|date:"d.m.Y H:i" }}
+        {% else %}
+                --- Złożone: {{ order.submitted|date:"d.m.Y H:i" }}
+        {% endif %}
+        <br/><br/>
+        {% for product in products %}
+                {{ product.name }} -- {% if prod.cancelled is not None %} Anulowany - {{ prod.cancelled|date:"d.m.Y" }}
+                {% elif prod.finished is not None %} Zakończony - {{ prod.finished|date:"d.m.Y" }}
+                {% elif prod.collected is not None %} Skompletowany - {{ prod.collected|date:"d.m.Y" }}
+                {% else %} Zamówiony - {{ prod.ordered|date:"d.m.Y" }}
+                {% endif %}<br/>
+        {% endfor %}</a>
+    {% endif %}
+
+</div>
+{% endblock %}

@@ -12,48 +12,43 @@
 
 <div class=view_order_right><br></br>
     <div>
+    
+        <div style="float:left; width:50%; "><center>Klient:</center></div> 
+        <div style="float: right; width:50%; font-weight: bold;"><center>{{ order.customer.first_name }} {{ order.customer.last_name }}</center></div>
         
-         <div style="float:left; width:50%; "><center>Klient:</center></div> 
-         <div style="float: right; width:50%; font-weight: bold"><center>{{ order.customer.first_name }} {{ order.customer.last_name }}</center></div>
-         
-         <br style="clear:both" />
-         
-         <div style="float:left; width:50%;">Numer telefonu:</div> 
-         <div style="float: right; width:50%;">{{ order.customer.phone}}</div>
+        <br style="clear:both;" />
+        
+        <div style="float:left; width:50%;">Numer telefonu:</div> 
+        <div style="float: right; width:50%;">{{ order.customer.phone}}</div>
 
-         <br style="clear:both" />
-         
-         <div style="float:left; width:50%;">Adres e-mail:</div> 
-         <div style="float: right; width:50%;">{{ order.customer.email}}</div>
+        <br style="clear:both;" />
+        
+        <div style="float:left; width:50%;">Adres e-mail:</div> 
+        <div style="float: right; width:50%;">{{ order.customer.email}}</div>
     </div>
     <br></br>
     <div id="edit_product">
-         <p style="font-size: 20px;font-weight: bold">Statusy zamówienia:</p>
-         <div style="float:left; width:33%">Nazwa</div><div style="float:left; width:33%"">Dostępnych</div><div style="float:left;width:33%">Próg</div>
-         <br style="clear:both" />
-         <br></br>
-         <div style="float:left; width:33%">FORM</div><div style="float:left; width:33%"">FORM</div><div style="float:left;width:33%">FORM</div>
+        <form action='.' method='POST'>{% csrf_token %}
+            Status zamówienia<br/><br/>
+            <div id=l>{% if order.cancelled is not None %} Anulowane - {{ order.cancelled|date:"d.m.Y" }}
+                {% elif order.finished is not None %} Zakończone - {{ order.finished|date:"d.m.Y" }}
+                {% else %} Złożone - {{ order.submitted|date:"d.m.Y" }}
+                {% endif %}</div><div id=r>{{ form.status }}</div><br/><br/>
+            <div id=l>Płatność: {% if order.paid == 'not_paid' %} Nieopłacone
+            {% elif order.paid == 'partly_paid' %} Wpłacono zaliczkę
+            {% else %} Opłacone
+            {% endif %}</div> <div id=r>{{ form.paid }}</div><br/><br/>
+            {% for prod, ord in products %}
+            <div id=l>{{ prod.name }} </div> <div id=r> {% if ord.cancelled is not None %} Anulowany - {{ ord.cancelled|date:"d.m.Y" }}
+                    {% elif ord.finished is not None %} Zakończony - {{ ord.finished|date:"d.m.Y" }}
+                    {% elif ord.collected is not None %} Skompletowany - {{ ord.collected|date:"d.m.Y" }}
+                    {% else %} Zamówiony - {{ ord.ordered|date:"d.m.Y" }}
+                    {% endif %} </div><br/><br/>
+            {% endfor %}
+
+            <center><input type='submit' value='Aktualizuj' /></center>
+        </form>
      </div>
  </div>
 
-<!-- <div class=view_order_right>
-    <div style="font-size: 15px;">
-        <br></br>
-        Klient: <b>{{ order.customer.first_name }} {{ order.customer.last_name }}</b>
-        <br></br>
-        Złożone: <b>{{ order.submitted|date:"d.m.Y H:i" }}</b>
-        <br></br>
-        
-    
-    </div>
-
-    <br style="clear:both" />
-    <div style="margin-left:40px; text-align: left" >
-        <b>Produkty:</b><br></br>
-        {% for product in products %}
-             -  {{ product.name }} <br/>
-        {% endfor %}
-    </div>
-</div>
-<div style="clear:both;"></div> -->
 {% endblock %}

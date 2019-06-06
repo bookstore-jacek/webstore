@@ -9,7 +9,7 @@ from django.template.loader import render_to_string
 from ExtOrder.models import ExtOrder as Order
 from OrderedProduct.models import OrderedProduct
 from Product.models import Product
-from .forms import ProductForm, ProductSearchForm, RaportForm
+from .forms import ProductForm, ProductSearchForm, RaportForm, UpdateForm
 from .utils import sort_id, find_products
 
 from weasyprint import HTML, CSS
@@ -101,10 +101,25 @@ def html_to_pdf_view(request):
     return response
 
 
-def edit_view(request,id):
+def edit_view(request, id):
     obj = get_object_or_404(Product, id=id)
+    if request.method == 'POST':
+        form = UpdateForm(request.POST, obj)
+        print(1)
+        if form.is_valid():
+            print(2)
+            data = form.cleaned_data
+            obj.name = data.get('name').capitalize()
+            obj.quantity = data.get('qt')
+            print(obj.quantity)
+            obj.threshold = data.get('th')
+            obj.save()
+            form = UpdateForm(obj)
+    else:
+        form = UpdateForm(obj)
     context = {
         'product': obj,
+        'form': form
     }
 
     return render(request, "product/product_edit.html", context)

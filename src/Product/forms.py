@@ -1,6 +1,39 @@
 from django import forms   
 from .models import Product
 
+class UpdateForm(forms.Form):
+    def __init__(self, request, product, *args, **kwargs):
+        super(UpdateForm, self).__init__(*args, **kwargs)
+        self.product = product
+        self.fields['name'] = forms.CharField(label='', initial=self.product.name, required=False,  widget=forms.TextInput(attrs={ 'size': 16 }))
+        self.fields['qt'] = forms.IntegerField(label='', initial=self.product.quantity, required=False,  widget=forms.NumberInput(attrs={ 'size': 16 }))
+        self.fields['th'] = forms.IntegerField(label='', initial=self.product.threshold, required=False,  widget=forms.NumberInput(attrs={ 'size': 16 }))
+
+    def clean_name(self, *args, **kwargs):
+        raise forms.ValidationError('Produkt o podanej nazwie istnieje w bazie')
+        name = self.cleaned_data.get('name')
+        try:
+            match = Product.objects.get(name__iexact=name)
+        except Product.DoesNotExist:
+            return name
+        if match.id != self.product.id:
+            raise forms.ValidationError('Produkt o podanej nazwie istnieje w bazie')
+        else:
+            return name
+
+    def clean_qt(self, *args, **kwargs):
+        qt = self.cleaned_data.get('qt')
+        if qt < 0:
+            raise forms.ValidationError('Ilość nie może być ujemna')
+        return qt
+
+    def clean_th(self, *args, **kwargs):
+        th = self.cleaned_data.get('th')
+        if th < 0:
+            raise forms.ValidationError('Ilość nie może być ujemna')
+        return th
+
+
 class RaportForm(forms.Form):
     name = forms.CharField(label='', required=True,  widget=forms.TextInput(attrs={ "placeholder":"Nazwa produktu *", "class":"input_field"}))
     qt   = forms.IntegerField(label='', required=True,  widget=forms.NumberInput(attrs={ "placeholder":"Ilość *", "class":"input_field"}))

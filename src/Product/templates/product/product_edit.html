@@ -1,35 +1,56 @@
 {% extends "panel_base.html" %}
 
-
-
 {% block back %}<input type=button value="Wstecz" onClick="javascript:history.go(-1);">{% endblock %}
 
 {% block content %}
 
 <div class=view_order_left>
-    <div id="vertical_all"; ><h1>Edycja produktu</h1></div>
+    <div id="vertical_all" ><h1>Edycja produktu</h1></div>
 </div>
 
-<div class=view_order_right><br></br>
+<div class=view_order_right><br/></br>
    <p style="font-size: 20px;font-weight: bold;">{{ product.name}}</p>
-   <br></br>
+   <br/></br>
    <div>
        
         <div style="float:left; width:50%; "><center>Dostępnych:</center></div> 
         <div style="float: right; width:50%; ">{{ product.quantity}}</div>
         
-        <br style="clear:both" />
+        <br style="clear:both;"/>
         
         <div style="float:left; width:50%;">Próg:</div> 
         <div style="float: right; width:50%;">{{ product.threshold}}</div>
    </div>
-   <br></br>
+   <br/></br>
    <div id="edit_product">
-        <p style="font-size: 20px;font-weight: bold">Zaktualizuj</p>
-        <div style="float:left; width:33%">Nazwa</div><div style="float:left; width:33%"">Dostępnych</div><div style="float:left;width:33%">Próg</div>
-        <br style="clear:both" />
-        <br></br>
-        <div style="float:left; width:33%">FORM</div><div style="float:left; width:33%"">FORM</div><div style="float:left;width:33%">FORM</div>
+        
+        <!-- <p style="font-size: 20px;font-weight: bold;">Zaktualizuj</p> -->
+        <div style="float:left; width:33%;">Nazwa</div><div style="float:left; width:33%"">Dostępnych</div><div style="float:left;width:33%">Próg</div>
+        <br style="clear:both;" />
+        <br/>
+        <form action='.' method='POST'>{% csrf_token %}
+            <div style="float:left; width:33%;">
+                {% for error in form.name.errors %}
+                    {{ error }}
+                {% endfor %}
+                {{ form.name }}
+            </div>
+            <div style="float:left; width:33%"">
+                {% for error in form.qt.errors %}
+                    {{ error }}
+                {% endfor %}
+                {{ form.qt }}
+            </div>
+            <div style="float:left;width:33%">
+                {% for error in form.th.errors %}
+                    {{ error }}
+                {% endfor %}
+                {{ form.th }}
+            </div>
+            <div id=verticalall>
+                    <input type='submit' value='Zaktualizuj' />
+            </div>
+        </form>
     </div>
 </div>
 

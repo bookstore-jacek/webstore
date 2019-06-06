@@ -16,7 +16,7 @@
     <nav class="orderlistnav">
         <ul>
             {% for order, products in orders %}
-            <li><a href='/zamowienie/{{order.id}}/'>
+            <li><a href='/zamowienie/{{order.id}}/edytuj'>
                 #{{ order.id }} - {{ order.customer.first_name }} {{ order.customer.last_name }} 
                 {% if order.finished is not None %}
                      --- Zamknięte: {{ order.finished|date:"d.m.Y H:i" }}

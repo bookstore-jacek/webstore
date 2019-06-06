@@ -3,6 +3,22 @@ from .models import ExtOrder as Order
 from Customer.models import Customer
 from Product.models import Product
 
+class EditForm(forms.Form):
+    def __init__(self, request, num, *args, **kwargs):
+        super(EditForm, self).__init__(*args, **kwargs)
+        self.fields['paid']   = forms.ChoiceField(choices=(('not_paid',    'Nieopłacone'),
+                                                           ('partly_paid', 'Wpłacono zaliczkę'),
+                                                           ('fully_paid',  'Opłacone')))
+        self.fields['status'] = forms.ChoiceField(choices=(('submitted',   'Złożone'),
+                                                           ('finished',    'Odebrane'),
+                                                           ('cancelled',   'Anulowane')))
+        for i in range(num):
+            self.fields[f'prod_status{i}'] = forms.ChoiceField(choices=(('ordered',     'Zamówione'),
+                                                                        ('collected',   'Gotowe'),
+                                                                        ('finished',    'Odebrane'),
+                                                                        ('cancelled',   'Anulowane')))
+
+
 class OrderSearchForm(forms.Form):
     user_input = forms.CharField(label='', required=False,  widget=forms.TextInput(attrs={ "placeholder":"Wyszukaj frazę", "class":"input_field"}))
     status     = forms.ChoiceField(choices=(('all',         'Wszystkie'),

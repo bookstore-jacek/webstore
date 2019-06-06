@@ -3,7 +3,7 @@ from django.views import View
 from django.db.models.functions import Now
 
 from .models import ExtOrder as Order
-from .forms import OrderForm, OrderSearchForm
+from .forms import OrderForm, OrderSearchForm, EditForm
 from .utils import find_orders, attach_products, sort_id, filter_orders
 
 from Product.models import Product
@@ -64,19 +64,36 @@ def add_order_view(request, *args, **kwargs):
 def check_status_view(request, *args, **kwargs):
     return render(request, "order/check_status.html", {})
 
-def detail_view(request, id):
-    obj = get_object_or_404(Order, id=id)
-    order, products = list(attach_products([obj]))[0]
-    context = {
-        'order': order,
-        'products': products
-    }
-    return render(request, "order/order_details.html", context)
+# def detail_view(request, id):
+#     obj = get_object_or_404(Order, id=id)
+#     order, products = list(attach_products([obj]))[0]
+#     context = {
+#         'order': order,
+#         'products': products
+#     }
+#     return render(request, "order/order_details.html", context)
 
 def edit_view(request, id):
     obj = get_object_or_404(Order, id=id)
-
+    num = OrderedProduct.objects.filter(order_id=obj.id).count()
+    if request.method == 'POST':
+        form = EditForm(request.POST, num)
+        print(1)
+        if form.is_valid():
+            print(2)
+            # data = form.cleaned_data
+            # if data.get('name'):
+            #     obj.name = data.get('name').capitalize()
+            # if data.get('qt'):
+            #     obj.quantity = data.get('qt')
+            # if data.get('th'):
+            #     obj.threshold = data.get('th')
+            # obj.save()
+            form = EditForm(None, num)
+    else:
+        form = EditForm(None, num)
     context = {
-        'order': obj
+        'order': obj,
+        'form': form
     }
     return render(request, "order/edit_order.html", context)

@@ -1,0 +1,15 @@
+{% extends "panel_base.html" %}
+
+{% block back %}<input type=button value="Wstecz" onClick="javascript:history.go(-1);">{% endblock %}
+
+{% block content %}
+
+<form action='.' method='POST'>{% csrf_token %}
+
+    {{ form.as_p }}
+    <div id=vertical_all>
+        <input type='submit' value='Zaktualizuj'/>
+    </div>
+</form>
+
+{% endblock %}

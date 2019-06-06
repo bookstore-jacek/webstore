@@ -108,6 +108,11 @@ img
 	display: table;
 }
 
+.midtile:hover
+{
+	background-color: #1c55be;
+}
+
 .midtileg
 {
 	border-radius: 25px;
@@ -368,9 +373,9 @@ input[type=button]:hover {
 	display: table-cell;
 	vertical-align: middle;
 	text-align: center;
-  }
+}
 
-  .rectangle {
+.rectangle {
 	background: rgb(243, 243, 243);
 	height: 150px;
 	width: 150px;
@@ -381,12 +386,23 @@ input[type=button]:hover {
 	text-align: center;
   }
 
-	.edit_product {
-		float:left;
-		width:540px;
-		height:100%;
-		background:#ffffff;
-		color: black;
-		padding: 10px,
-		border-radius: 25px;
-	}
+.edit_product {
+	float:left;
+	width:540px;
+	height:100%;
+	background:#ffffff;
+	color: black;
+	padding: 10px;
+	border-radius: 25px;
+}
+
+.stockdiv
+{
+	border-radius: 20px;
+	padding: 20px;
+	background-color:rgba(84, 130, 53, 0.8);
+	margin-top: 100px;
+	margin-left: 100px;
+	width: 70%;
+	height: 50%;
+}

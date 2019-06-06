@@ -1,7 +1,28 @@
 {% extends "panel_base.html" %}
 
-{% block back %}<input type=button value="Wstecz" onClick="javascript:history.go(-1);">{% endblock %}
+{% block back %}
+<input type=button value="Wstecz" onClick="javascript:history.go(-1);">
+{% endblock %}
 
 {% block content %}
+    <div style="height:50px;"></div>
+    <a href="/panel/raport/">
+        <div class="midtileg">
+            <div id="vertical_all"><h3>Raport dzienny</h3></div>
+        </div>
+    </a>
 
+    <a href="/panel/zaktualizuj-asortyment/">
+        <div class="midtile">
+            <div id="vertical_all"><h3>Zaktualizuj asortyment</h3></div>
+        </div>
+    </a>
+
+    <div style="height:25px; clear:both;"></div>
+
+    <a href="/panel/aktualizuj-produkt/">
+        <div class="midtileg" style="margin-left:240px;">
+            <div id="vertical_all"><h3>Aktualizuj produkt</h3></div>
+        </div>
+    </a>
 {% endblock %}

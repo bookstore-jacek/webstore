@@ -28,10 +28,21 @@ def find_orders(phrase):
 def filter_orders(orders, status):
     if status == 'unfinished':
         return list(filter(lambda x: x.finished is None and x.cancelled is None, orders))
+
+    if status == 'ready':
+        ret = []
+        for ord in orders:
+            products = list(OrderedProduct.objects.filter(order_id=ord.id))
+            if all(map(lambda x: x.collected is not None and x.finished is None and x.cancelled is None, products)):
+                ret.append(ord)
+        return ret
+
     if status == 'finished':
         return list(filter(lambda x: x.finished is not None, orders))
+
     if status == 'cancelled':
         return list(filter(lambda x: x.cancelled is not None, orders))
+
     return orders
    
 def attach_products(orders):

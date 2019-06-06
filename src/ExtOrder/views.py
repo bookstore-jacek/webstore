@@ -61,34 +61,6 @@ def add_order_view(request, *args, **kwargs):
     }
     return render(request, "order/add_order.html", context)
 
-def all_orders_view(request, *args, **kwargs):
-    orders = list(Order.objects.all())
-    orders.sort(key=sort_id)
-    ord_products = [OrderedProduct.objects.filter(order_id=order.id) for order in orders]
-    products = []
-    for ord_prod_filtered in ord_products:
-        products.append([Product.objects.get(id=ord_prod.product_id) for ord_prod in ord_prod_filtered])
-
-    context = {
-        'orders': zip(orders, products)
-    }
-    return render(request, "order/all_orders.html", context)
-
-def pending_orders_view(request, *args, **kwargs):
-    not_finished_orders = set(Order.objects.filter(finished__isnull=True))
-    not_cancelled_orders = set(Order.objects.filter(cancelled__isnull=True))
-    orders = list(not_cancelled_orders & not_finished_orders)
-    orders.sort(key=sort_id)
-    ord_products = [OrderedProduct.objects.filter(order_id=order.id) for order in orders]
-    products = []
-    for ord_prod_filtered in ord_products:
-        products.append([Product.objects.get(id=ord_prod.product_id) for ord_prod in ord_prod_filtered])
-
-    context = {
-        'orders': zip(orders, products)
-    }
-    return render(request, "order/pending_orders.html", context)
-
 def check_status_view(request, *args, **kwargs):
     return render(request, "order/check_status.html", {})
 

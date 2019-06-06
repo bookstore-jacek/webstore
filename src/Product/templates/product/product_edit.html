@@ -25,7 +25,7 @@
    <div id="edit_product">
         
         <!-- <p style="font-size: 20px;font-weight: bold;">Zaktualizuj</p> -->
-        <div style="float:left; width:33%;">Nazwa</div><div style="float:left; width:33%"">Dostępnych</div><div style="float:left;width:33%">Próg</div>
+        <div style="float:left; width:33%;">Nazwa</div><div style="float:left; width:33%;"">Dostępnych</div><div style="float:left;width:33%;">Próg</div>
         <br style="clear:both;" />
         <br/>
         <form action='.' method='POST'>{% csrf_token %}
@@ -35,20 +35,20 @@
                 {% endfor %}
                 {{ form.name }}
             </div>
-            <div style="float:left; width:33%"">
+            <div style="float:left; width:33%;"">
                 {% for error in form.qt.errors %}
                     {{ error }}
                 {% endfor %}
                 {{ form.qt }}
             </div>
-            <div style="float:left;width:33%">
+            <div style="float:left; width:33%;">
                 {% for error in form.th.errors %}
                     {{ error }}
                 {% endfor %}
                 {{ form.th }}
             </div>
             <div id=verticalall>
-                    <input type='submit' value='Zaktualizuj' />
+                <input type='submit' value='Zaktualizuj'/>
             </div>
         </form>
     </div>

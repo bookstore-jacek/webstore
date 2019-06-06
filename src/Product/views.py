@@ -104,19 +104,21 @@ def html_to_pdf_view(request):
 def edit_view(request, id):
     obj = get_object_or_404(Product, id=id)
     if request.method == 'POST':
-        form = UpdateForm(request.POST, obj)
+        form = UpdateForm(request.POST)
         print(1)
         if form.is_valid():
             print(2)
             data = form.cleaned_data
-            obj.name = data.get('name').capitalize()
-            obj.quantity = data.get('qt')
-            print(obj.quantity)
-            obj.threshold = data.get('th')
+            if data.get('name'):
+                obj.name = data.get('name').capitalize()
+            if data.get('qt'):
+                obj.quantity = data.get('qt')
+            if data.get('th'):
+                obj.threshold = data.get('th')
             obj.save()
-            form = UpdateForm(None, obj)
+            form = UpdateForm(None)
     else:
-        form = UpdateForm(None, obj)
+        form = UpdateForm(None)
     context = {
         'product': obj,
         'form': form

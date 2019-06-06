@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.template.loader import get_template
 from django.http import HttpResponse
 from django.views.generic import View
@@ -101,10 +101,10 @@ def html_to_pdf_view(request):
     return response
 
 
-def edit_view(request):
+def edit_view(request,id):
     obj = get_object_or_404(Product, id=id)
-
     context = {
-        'product': obj
+        'product': obj,
     }
+
     return render(request, "product/product_edit.html", context)

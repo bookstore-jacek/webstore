@@ -14,13 +14,13 @@
         </form>
     </div>
     <nav class="orderlistnav">
-        <ul>
+        <ul style='width:700px;'>
             {% for prod in products %}
             <li>
-                {{ prod.name }} -- {{ prod.quantity }} na stanie
+                {{ prod.name }} <div style='float:right'> Dostępnych: {{ prod.quantity }}</div>
             </li> <br/>
             {% empty %}
-                <li>Nieznaloziono żadnych książek</li>
+                <li>Nie znaleziono żadnych książek.</li>
             {% endfor %}
         </ul>
     </nav >

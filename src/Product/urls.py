@@ -6,5 +6,5 @@ from .views import (
 
 app_name = 'produkt'
 urlpatterns = [
-    path('<int:id>/edytuj', edit_view, name='product-edit'),
+    path('<int:id>/edytuj/', edit_view, name='product-edit'),
 ]

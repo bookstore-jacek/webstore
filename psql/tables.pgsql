@@ -21,8 +21,6 @@ CREATE TABLE customer(
     email
         VARCHAR(30)
         UNIQUE,
-    passhash
-        TEXT
 );
 
 CREATE TABLE ext_order(

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block back %}
+<input type=button value="Wstecz" onClick="javascript:history.go(-1);"/>
+{% endblock %}
+
+{% block content %}
+<div class="customerlistview">
+    <h4>Asortyment</h4>
+    <div id="vertical_all">
+        <form action='.' method='POST'>{% csrf_token %}
+            {{ form.as_table }}
+            <input type='submit' class="button" value='Wyszukaj' />
+        </form>
+    </div>
+    <nav class="orderlistnav">
+        <ul style='width:700px;'>
+            {% for prod in products %}
+            <li>
+                {{ prod.name }} <div style='float:right'> Ilość: {{ prod.quantity }}, Próg: {{ prod.threshold}}</div>
+            </li> <br/>
+            {% empty %}
+                <li>Nieznaloziono żadnych książek</li>
+            {% endfor %}
+        </ul>
+    </nav >
+</div>
+{% endblock %}

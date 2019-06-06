@@ -18,7 +18,7 @@ from django.urls import include, path
 
 from pages.views import home_view, worker_view, update_db_view, contact_view
 from ExtOrder.views import find_order_view, all_orders_view, pending_orders_view, check_status_view, add_order_view
-from Product.views import add_product_view, html_to_pdf_view, find_book_view
+from Product.views import add_product_view, html_to_pdf_view, find_book_view, staff_find_book_view
 
 from Customer.views import customers_view, personal_orders_view, add_customer_view
 
@@ -36,6 +36,7 @@ urlpatterns = [
     path('panel/', worker_view, name='panel'),
     path('panel/klienci/', customers_view, name='customers'),
     path('panel/zamowienia/', find_order_view, name='find_order'),
+    path('panel/asortyment/', staff_find_book_view, name='staff_find_book'),
     path('panel/dodaj-klienta/', add_customer_view, name='add_customer'),
     path('panel/dodaj-produkt/', add_product_view, name='add_product'),
     path('panel/aktualizuj-baze/', update_db_view, name='update_db'),

@@ -381,12 +381,13 @@ input[type=button]:hover {
 	text-align: center;
   }
 
-	.edit_product {
+	#edit_product {
 		float:left;
-		width:540px;
+		margin-left:20px;
+		margin-top:20px;
+		width:500px;
 		height:100%;
-		background:#ffffff;
-		color: black;
-		padding: 10px,
+		background:rgba(84, 130, 53, 0.8);
+		padding: 10px;
 		border-radius: 25px;
 	}

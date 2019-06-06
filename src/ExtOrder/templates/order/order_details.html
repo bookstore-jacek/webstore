@@ -10,6 +10,29 @@
     <div id="vertical_all"; ><h1>Zamówienie</h1><center><div class="circle"; style="margin-left: 75px;font-size:50px; font-weight: bold; ">{{ order.id }}</div></center></div>
 </div>
 
+<div class=view_order_right><br></br>
+    <p style="font-size: 20px;font-weight: bold;">{{ product.name}}</p>
+    <br></br>
+    <div>
+        
+         <div style="float:left; width:50%; "><center>Klient:</center></div> 
+         <div style="float: right; width:50%; font-weight: bold">{{ order.customer.first_name }} {{ order.customer.last_name }}</div>
+         
+         <br style="clear:both" />
+         
+         <div style="float:left; width:50%;">Próg:</div> 
+         <div style="float: right; width:50%;">{{ product.threshold}}</div>
+    </div>
+    <br></br>
+    <div id="edit_product">
+         <p style="font-size: 20px;font-weight: bold">Zaktualizuj</p>
+         <div style="float:left; width:33%">Nazwa</div><div style="float:left; width:33%"">Dostępnych</div><div style="float:left;width:33%">Próg</div>
+         <br style="clear:both" />
+         <br></br>
+         <div style="float:left; width:33%">FORM</div><div style="float:left; width:33%"">FORM</div><div style="float:left;width:33%">FORM</div>
+     </div>
+ </div>
+
 <div class=view_order_right>
     <div style="font-size: 15px;">
         <br></br>

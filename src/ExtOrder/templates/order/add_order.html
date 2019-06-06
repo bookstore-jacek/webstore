@@ -5,7 +5,7 @@
 {% block content %}
 <div class="orderaddview">
     <div id="verticalall">
-        <h4>Wprowadź zamówienie</h4> <br/> <br/>
+        <center><h2>Wprowadź zamówienie</h2></center> <br/> <br/>
         <form action='.' method='POST'>{% csrf_token %}
             <div class=order_col1>
                 {% for error in form.phone.errors %}
@@ -16,7 +16,7 @@
                     {{ error }}
                 {% endfor %}
                 {{ form.product1 }} <br/> <br/>
-                <div class="choicebutt">
+                <div style="margin-left:110px;" class="choicebutt">
                     {% for error in form.paid.errors %}
                         {{ error }}
                     {% endfor %}
@@ -41,8 +41,8 @@
                 {% endfor %}
                 {{ form.product5 }} <br/>
             </div>
-            <div id=vertical_all>
-                <input type='submit' value='Zapisz i dodaj kolejny' />
+            <div>
+                <input style="margin-left: 340px;margin-top: 70px;" type='submit' value='Zapisz i dodaj kolejne' />
             </div>
         </form>
     </div>

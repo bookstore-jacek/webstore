@@ -6,12 +6,12 @@
 
 {% block content %}
 <div class="orderlistview">
-    <h4>Zamówienia</h4>
-    <div id="vertical_all">
+    <center><h2>Zamówienia</h2></center>
+    <div ><center>
         <form action='.' method='POST'>{% csrf_token %}
             {{ form.as_table }}
             <input type='submit' class="button" value='Wyszukaj' />
-        </form>
+        </form></center>
     </div>
     <nav class="orderlistnav">
         <ul>

@@ -120,6 +120,18 @@ img
 	display: table;
 }
 
+.midtileo
+{
+	border-radius: 25px;
+	margin: 10px;
+	width: 430px;
+	height: 140px;
+	background-color: #c55a11;
+	float: left;
+	text-align: center;
+	display: table;
+}
+
 .smalltile
 {
 	border-radius: 25px;

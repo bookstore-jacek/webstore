@@ -1,0 +1,17 @@
+{% extends "panel_base.html" %}
+
+
+
+{% block back %}<input type=button value="Wstecz" onClick="javascript:history.go(-1);">{% endblock %}
+
+{% block content %}
+
+<div class=view_order_left>
+    <div id="vertical_all"; ><h1>Produkt</h1><center><div class="circle"; style="margin-left: 75px;font-size:50px; font-weight: bold; ">{{ product.id }}</div></center></div>
+</div>
+
+<div class=view_order_right>
+   Formularz
+</div>
+<div style="clear:both;"></div>
+{% endblock %}

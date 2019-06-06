@@ -40,9 +40,9 @@ urlpatterns = [
     path('panel/dodaj-produkt/', add_product_view, name='add_product'),
     path('panel/aktualizuj-baze/', update_db_view, name='update_db'),
     path('panel/dodaj-zamowienie/', add_order_view, name='add_order'),
-    # path('panel/znajdz-zamowienie/', find_order_view, name='find_order'),
     path('panel/zamowienie-hurtowe/', html_to_pdf_view, name='generate_pdf'),
-    # path('panel/wszystkie-zamowienia/', all_orders_view, name='all_orders'),
 
-    path('zamowienie/', include('ExtOrder.urls'))
+    #dynamic links:
+    path('zamowienie/', include('ExtOrder.urls')),
+    path('produkt/', include('Product.urls'))
 ]

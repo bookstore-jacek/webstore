@@ -80,3 +80,12 @@ def html_to_pdf_view(request):
         return response
 
     return response
+
+
+def edit_view(request):
+    obj = get_object_or_404(Product, id=id)
+
+    context = {
+        'product': obj
+    }
+    return render(request, "product/product_edit.html", context)

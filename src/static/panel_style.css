@@ -380,3 +380,13 @@ input[type=button]:hover {
 	vertical-align: middle;
 	text-align: center;
   }
+
+	.edit_product {
+		float:left;
+		width:540px;
+		height:100%;
+		background:#ffffff;
+		color: black;
+		padding: 10px,
+		border-radius: 25px;
+	}

@@ -10,8 +10,27 @@
     <div id="vertical_all"; ><h1>Edycja produktu</h1></div>
 </div>
 
-<div class=view_order_right>
-   {{ product.name}}
+<div class=view_order_right><br></br>
+   <p style="font-size: 20px;font-weight: bold;">{{ product.name}}</p>
+   <br></br>
+   <div>
+       
+        <div style="float:left; width:50%; "><center>Dostępnych:</center></div> 
+        <div style="float: right; width:50%; ">{{ product.quantity}}</div>
+        
+        <br style="clear:both" />
+        
+        <div style="float:left; width:50%;">Próg:</div> 
+        <div style="float: right; width:50%;">{{ product.threshold}}</div>
+   </div>
+   <br></br>
+   <div style="edit_product">
+        <p style="font-size: 20px">Zmień wartości:</p>
+        <div style="float:left; width:33%">Nazwa</div><div style="float:left; width:33%"">Dostępnych</div><div style="float:left;width:33%">Próg</div>
+        <br style="clear:both" />
+        <br></br>
+        <div style="float:left; width:33%">FORM</div><div style="float:left; width:33%"">FORM</div><div style="float:left;width:33%">FORM</div>
+    </div>
 </div>
-<div style="clear:both;"></div>
+
 {% endblock %}

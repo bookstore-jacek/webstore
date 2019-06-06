@@ -2,9 +2,11 @@ from django import forms
 from .models import ExtOrder as Order
 from Customer.models import Customer
 from Product.models import Product
+import datetime
 
 class EditForm(forms.Form):
     def __init__(self, request, num, *args, **kwargs):
+        now = datetime.datetime.now()
         super(EditForm, self).__init__(*args, **kwargs)
         self.fields['paid']   = forms.ChoiceField(choices=(('not_paid',    'Nieopłacone'),
                                                            ('partly_paid', 'Wpłacono zaliczkę'),
@@ -17,6 +19,8 @@ class EditForm(forms.Form):
                                                                         ('collected',   'Gotowe'),
                                                                         ('finished',    'Odebrane'),
                                                                         ('cancelled',   'Anulowane')))
+
+        # now.strftime("%d.%m.%Y %H:%M")
 
 
 class OrderSearchForm(forms.Form):

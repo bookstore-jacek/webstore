@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-from pages.views import home_view, worker_view, contact_view, update_db_view
+from pages.views import home_view, worker_view, contact_view, update_db_view, about_us_view
 from ExtOrder.views import find_order_view, check_status_view, add_order_view
 from Product.views import raport_view, update_prod_view, add_product_view, html_to_pdf_view, find_book_view, staff_find_book_view
 from OrderedProduct.views import stock_update_view
@@ -32,6 +32,7 @@ urlpatterns = [
     path('zamowienia/', personal_orders_view, name='personal_orders'),
     path('znajdz-ksiazke/', find_book_view, name='find_book'),
     path('sprawdz-status/', check_status_view, name='check_status'),
+    path('o-nas/', about_us_view, name='about-us'),
 
     path('panel/', worker_view, name='panel'),
     path('panel/raport/', raport_view, name='raport'),

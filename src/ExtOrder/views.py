@@ -64,14 +64,14 @@ def add_order_view(request, *args, **kwargs):
 def check_status_view(request, *args, **kwargs):
     return render(request, "order/check_status.html", {})
 
-# def detail_view(request, id):
-#     obj = get_object_or_404(Order, id=id)
-#     order, products = list(attach_products([obj]))[0]
-#     context = {
-#         'order': order,
-#         'products': products
-#     }
-#     return render(request, "order/order_details.html", context)
+def detail_view(request, id):
+    obj = get_object_or_404(Order, id=id)
+    order, products = list(attach_products([obj]))[0]
+    context = {
+        'order': order,
+        'products': products
+    }
+    return render(request, "order/order_details.html", context)
 
 def edit_view(request, id):
     obj = get_object_or_404(Order, id=id)

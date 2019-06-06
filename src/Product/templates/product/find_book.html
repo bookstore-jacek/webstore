@@ -6,12 +6,12 @@
 
 {% block content %}
 <div class="customerlistview">
-    <h4>Znajdź książkę</h4>
-    <div id="vertical_all">
-        <form action='.' method='POST'>{% csrf_token %}
+    <center><h2>Znajdź książkę</h2></center>
+    <div>
+    <center><form action='.' method='POST'>{% csrf_token %}
             {{ form.as_p }}
             <input type='submit' class="button" value='Wyszukaj' />
-        </form>
+        </form></center>
     </div>
     <nav class="orderlistnav">
         <ul style='width:700px;'>

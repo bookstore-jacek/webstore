@@ -86,6 +86,7 @@ def html_to_pdf_view(request):
 
     for prod in OrderedProduct.objects.filter(ordered__isnull=True):
         prod.ordered = now
+        prod.save()
 
     html_string = render_to_string('product/bulk_order.html', {
         'actual_date_time': now.strftime("%d.%m.%Y %H:%M"),

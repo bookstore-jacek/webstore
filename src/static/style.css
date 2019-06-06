@@ -142,6 +142,20 @@ a.tilelinkhtml5
 	background-color: rgba(155, 155, 155, 0.8);
 }
 
+.about-us-l{
+	width: 200px; 
+	float: left;
+}
+
+.about-us-r{
+	font-size: 15px;
+	margin-left: 40px;
+	border-radius: 25px;
+	width: 500px; 
+	height: 70%;
+	float: left;
+	background-color: rgba(155, 155, 155, 0.8);
+}
 .map_tile
 {
 	width: 345px;

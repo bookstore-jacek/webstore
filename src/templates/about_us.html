@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block back %}<input type=button value="Wstecz" onClick="javascript:history.go(-1);">{% endblock %}
+
+{% block content %}
+<div style="width: 100%; overflow: hidden;">
+    <div id="vertical_all" style="display: table;width: 400px;height: 800px; float: left;margin-top:80px"> <center><img src="{% static 'logo_kwadrat.PNG' %}"; width="300px; " /> </center></div>
+    <div style="margin-left: 420px;font-size: 14px">  <p>Jesteśmy księgarnią usytuowaną w Gryfowie Śląskim.
+        W 1998 roku otworzyliśmy dla Państwa naszą pierwszą księgarnię na ulicy Sanatryjnej. 
+        Od tego czasu rozwijamy zarówno asortyment jak i możliwości prezentacji asortymentu. W 2007 lokalizacja sklepu uległa zmianie i obecnie jesteśmy dostępni na gryfowskim rynku.</p>
+        <br>
+        <p style="color:brown;line-height: 2px;font-weight: bold;">Nie tylko książki</p>
+        <p>Nasze księgarnie specjalizują się w sprzedaży detalicznej książek: od beletrystyki do tytułów technicznych. 
+        W bieżącej sprzedaży oferujemy około 5 tysięcy tytułów. Jeśli nie znajdą Państwo poszukiwanej pozycji na półce księgarni, 
+        istnieje możliwość indywidualnego zamówienia dowolnej pozycji (termin realizacji to następny dzień!). W naszej ofercie znajdziecie
+        Państwo również artykuły papiernicze, prasę, kalendarze, gry i puzzle, kartki okolicznościowe, a także wiele innych.</p><br>
+                    
+        <p style="color:brown;line-height: 2px;font-weight: bold;">Wydarzenia i promocje</p><br>
+        <p>Zachęcamy do śledzenia naszego profilu na Facebooku. Znajdują się na nim zarówno informacje o bieżących promocjach jak i również zapowiedzi nowych produktów wzbogacających naszą ofertę.</p>
+        
+        <br>
+        <p style="color:brown;line-height: 2px;font-weight: bold;">Zapraszamy</p><br> </div>
+</div>
+{% endblock %}

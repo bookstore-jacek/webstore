@@ -2,6 +2,7 @@ from django import forms
 from .models import ExtOrder as Order
 from Customer.models import Customer
 from Product.models import Product
+import datetime
 
 class FindForm(forms.Form):
     phone  = forms.CharField(label='', required=True,  widget=forms.TextInput(attrs={ "placeholder":"Podaj numer telefonu *",   "class":"input_field"}))

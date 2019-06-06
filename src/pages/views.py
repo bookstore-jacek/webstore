@@ -15,3 +15,6 @@ def update_db_view(request, *args, **kwargs):
 
 def contact_view(request, *args, **kwargs):
     return render(request, "contact.html", {})
+
+def about_us_view(request, *args, **kwargs):
+    return render(request, "about_us.html", {})

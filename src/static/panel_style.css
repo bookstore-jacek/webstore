@@ -434,9 +434,20 @@ input[type=button]:hover {
 {
 	border-radius: 20px;
 	padding: 20px;
-	background-color:rgba(84, 130, 53, 0.8);
+	background-color:rgba(68, 114, 196, 0.8);
 	margin-top: 100px;
-	margin-left: 100px;
+	margin-left: 115px;
+	width: 70%;
+	height: 50%;
+}
+
+.stockdiv_b
+{
+	border-radius: 20px;
+	padding: 20px;
+	background-color:rgba(68, 114, 196, 0.8);
+	margin-top: 100px;
+	margin-left: 115px;
 	width: 70%;
 	height: 50%;
 }

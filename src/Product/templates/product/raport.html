@@ -4,12 +4,12 @@
 
 {% block content %}
 <div class="stockdiv">
-    <div id="vertical_all">
-        <h4>Wprowadź kolejno każdy sprzedany produkt</h4> <br/> <br/>
-        <form action='.' method='POST'>{% csrf_token %}
+    <div >
+        <h4><center>Wprowadź kolejno każdy sprzedany produkt</center></h4> <br/> <br/>
+    <center><form action='.' method='POST'>{% csrf_token %}
             {{ form.as_table }}
             <div id=vertical_all>
-                <input type='submit' value='Dodaj' />
+                <input type='submit' value='Dodaj' /></center>
             </div>
         </form>
     </div>

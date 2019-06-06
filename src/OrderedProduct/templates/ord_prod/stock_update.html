@@ -3,13 +3,13 @@
 {% block back %}<input type=button value="Wstecz" onClick="javascript:history.go(-1);">{% endblock %}
 
 {% block content %}
-<div class="stockdiv">
-    <div id="vertical_all">
-        <h4>Wprowadź kolejno każdy produkt z zamówienia</h4> <br/> <br/>
-        <form action='.' method='POST'>{% csrf_token %}
+<div class="stockdiv_b">
+    <div>
+        <center><h4>Wprowadź kolejno każdy produkt z zamówienia</h4></center> <br/> <br/>
+        <center><form action='.' method='POST'>{% csrf_token %}
             {{ form.as_table }}
             <div id=vertical_all>
-                <input type='submit' value='Dodaj' />
+                <input type='submit' value='Dodaj' /></center>
             </div>
         </form>
     </div>

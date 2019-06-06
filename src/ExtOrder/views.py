@@ -53,8 +53,7 @@ def add_order_view(request, *args, **kwargs):
             for prod in products:
                 ord_prod = OrderedProduct.objects.create(
                     order_id=order.id,
-                    product_id=prod.id,
-                    ordered=Now()
+                    product_id=prod.id
                 )
             form = OrderForm()
     else:

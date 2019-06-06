@@ -10,7 +10,7 @@
     <nav class="orderlistnav">
         <ul>
             {% for order, products in orders %}
-            <li>
+            <li><a href='/zamowienie/{{order.id}}/'>
                 #{{ order.id }} - {{ order.customer.first_name }} {{ order.customer.last_name }} 
                 {% if order.finished is not None %}
                      --- Zamknięte: {{ order.finished|date:"d.m.Y H:i" }}
@@ -22,7 +22,7 @@
                 <br/>
                 {% for product in products %}
                      - {{ product.name }} <br/>
-                {% endfor %}
+                {% endfor %}</a>
             </li> <br/>
             {% empty %}
                 <li>Brak zamówień</li>

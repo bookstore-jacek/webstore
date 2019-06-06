@@ -14,7 +14,9 @@ from .utils import sort_id, find_products
 
 from weasyprint import HTML, CSS
 from collections import Counter
-from datetime import datetime
+import datetime
+
+
 
 # Create your views here.
 def find_book_view(request, *args, **kwargs):
@@ -50,6 +52,7 @@ def add_product_view(request):
 
 
 def html_to_pdf_view(request):
+    now = datetime.datetime.now()
     external = Counter([str(x.product_id) for x in OrderedProduct.objects.filter(ordered__isnull=True)])
     internal = {str(prod.id): prod.threshold-prod.quantity for prod in Product.objects.all() if prod.threshold - prod.quantity > 0}
     all_keys = set({**external, **internal}.keys())
@@ -63,7 +66,7 @@ def html_to_pdf_view(request):
         order += [(Product.objects.get(id=int(key)), value)]
 
     html_string = render_to_string('product/bulk_order.html', {
-        'actual_date_time': now().strftime("%d.%m.%Y %H:%M"),
+        'actual_date_time': now.strftime("%d.%m.%Y %H:%M"),
         'order': order
     })
 

@@ -51,7 +51,11 @@ def add_order_view(request, *args, **kwargs):
             paid = data.get('paid')
             order = Order.objects.create(customer_id=customer[0].id, paid=paid, submitted=Now())
             for prod in products:
-                ord_prod = OrderedProduct.objects.create(order_id=order.id, product_id=prod.id)
+                ord_prod = OrderedProduct.objects.create(
+                    order_id=order.id,
+                    product_id=prod.id,
+                    ordered=Now()
+                )
             form = OrderForm()
     else:
         form = OrderForm()

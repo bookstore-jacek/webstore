@@ -2,17 +2,14 @@ from django import forms
 from .models import Product
 
 class UpdateForm(forms.Form):
-    def __init__(self, request, product, *args, **kwargs):
-        super(UpdateForm, self).__init__(*args, **kwargs)
-        self.product = product
-        self.fields['name'] = forms.CharField(label='', initial=self.product.name, required=True,  widget=forms.TextInput(attrs={ 'size': 16 }))
-        self.fields['qt'] = forms.IntegerField(label='', initial=self.product.quantity, required=True,  widget=forms.NumberInput(attrs={ 'size': 16 }))
-        self.fields['th'] = forms.IntegerField(label='', initial=self.product.threshold, required=True,  widget=forms.NumberInput(attrs={ 'size': 16 }))
+    name = forms.CharField(label='', required=False,  widget=forms.TextInput(attrs={ 'size': 16 }))
+    qt = forms.IntegerField(label='', required=False,  widget=forms.NumberInput(attrs={ 'size': 16 }))
+    th = forms.IntegerField(label='', required=False,  widget=forms.NumberInput(attrs={ 'size': 16 }))
 
     def clean_name(self, *args, **kwargs):
         name = self.cleaned_data.get('name')
-        if name == self.product.name:
-            return name
+        if name == '':
+            return None
         try:
             match = Product.objects.get(name__iexact=name)
         except Product.DoesNotExist:
@@ -23,6 +20,8 @@ class UpdateForm(forms.Form):
 
     def clean_qt(self, *args, **kwargs):
         qt = self.cleaned_data.get('qt')
+        if qt is None:
+            return None
         if qt < 0:
             raise forms.ValidationError('Ilość nie może być ujemna')
         print('qt ok')
@@ -30,6 +29,8 @@ class UpdateForm(forms.Form):
 
     def clean_th(self, *args, **kwargs):
         th = self.cleaned_data.get('th')
+        if th is None:
+            return None
         if th < 0:
             raise forms.ValidationError('Ilość nie może być ujemna')
         print('th ok')

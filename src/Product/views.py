@@ -9,7 +9,7 @@ from django.template.loader import render_to_string
 from ExtOrder.models import ExtOrder as Order
 from OrderedProduct.models import OrderedProduct
 from Product.models import Product
-from .forms import ProductForm, ProductSearchForm
+from .forms import ProductForm, ProductSearchForm, RaportForm
 from .utils import sort_id, find_products
 
 from weasyprint import HTML, CSS
@@ -108,3 +108,25 @@ def edit_view(request,id):
     }
 
     return render(request, "product/product_edit.html", context)
+    
+def update_prod_view(request, *args, **kwargs):
+    return render(request, 'product/update_prod.html', {})
+
+def raport_view(request, *args, **kwargs):
+    if request.method == 'POST':
+        form = RaportForm(request.POST)
+        if form.is_valid():
+            prod = form.cleaned_data.get('name')
+            qt = form.cleaned_data.get('qt')
+            prod.quantity -= qt
+            if prod.quantity < 0:
+                prod.quantity = 0
+            prod.save()
+            form = RaportForm()
+    else:
+        form = RaportForm()
+
+    context={
+        "form": form
+    }
+    return render(request, 'product/raport.html', context)

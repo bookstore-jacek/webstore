@@ -114,9 +114,9 @@ def edit_view(request, id):
             print(obj.quantity)
             obj.threshold = data.get('th')
             obj.save()
-            form = UpdateForm(obj)
+            form = UpdateForm(None, obj)
     else:
-        form = UpdateForm(obj)
+        form = UpdateForm(None, obj)
     context = {
         'product': obj,
         'form': form

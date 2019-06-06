@@ -31,7 +31,8 @@ def find_order_view(request, *args, **kwargs):
     else:
         form = OrderSearchForm()
         orders = list(Order.objects.all())
-    print(orders)
+
+    orders.sort(key=sort_id)
 
     context={
         "form": form,

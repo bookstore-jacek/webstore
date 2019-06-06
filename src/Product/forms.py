@@ -5,32 +5,34 @@ class UpdateForm(forms.Form):
     def __init__(self, request, product, *args, **kwargs):
         super(UpdateForm, self).__init__(*args, **kwargs)
         self.product = product
-        self.fields['name'] = forms.CharField(label='', initial=self.product.name, required=False,  widget=forms.TextInput(attrs={ 'size': 16 }))
-        self.fields['qt'] = forms.IntegerField(label='', initial=self.product.quantity, required=False,  widget=forms.NumberInput(attrs={ 'size': 16 }))
-        self.fields['th'] = forms.IntegerField(label='', initial=self.product.threshold, required=False,  widget=forms.NumberInput(attrs={ 'size': 16 }))
+        self.fields['name'] = forms.CharField(label='', initial=self.product.name, required=True,  widget=forms.TextInput(attrs={ 'size': 16 }))
+        self.fields['qt'] = forms.IntegerField(label='', initial=self.product.quantity, required=True,  widget=forms.NumberInput(attrs={ 'size': 16 }))
+        self.fields['th'] = forms.IntegerField(label='', initial=self.product.threshold, required=True,  widget=forms.NumberInput(attrs={ 'size': 16 }))
 
     def clean_name(self, *args, **kwargs):
-        raise forms.ValidationError('Produkt o podanej nazwie istnieje w bazie')
         name = self.cleaned_data.get('name')
+        if name == self.product.name:
+            return name
         try:
             match = Product.objects.get(name__iexact=name)
         except Product.DoesNotExist:
+            print('name ok')
             return name
-        if match.id != self.product.id:
-            raise forms.ValidationError('Produkt o podanej nazwie istnieje w bazie')
-        else:
-            return name
+        raise forms.ValidationError('Produkt o podanej nazwie istnieje w bazie')
+
 
     def clean_qt(self, *args, **kwargs):
         qt = self.cleaned_data.get('qt')
         if qt < 0:
             raise forms.ValidationError('Ilość nie może być ujemna')
+        print('qt ok')
         return qt
 
     def clean_th(self, *args, **kwargs):
         th = self.cleaned_data.get('th')
         if th < 0:
             raise forms.ValidationError('Ilość nie może być ujemna')
+        print('th ok')
         return th
 
 

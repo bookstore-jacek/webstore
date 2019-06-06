@@ -19,6 +19,25 @@ import datetime
 
 
 # Create your views here.
+def staff_find_book_view(request, *args, **kwargs):
+    if request.method == 'POST':
+        form = ProductSearchForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data.get('user_input')
+            products = find_products(data)
+            form = ProductSearchForm()
+        else:
+            products = list(Product.objects.all())
+    else:
+        form = ProductSearchForm()
+        products = list(Product.objects.all())
+
+    context = {
+        'form' : form,
+        'products': products
+    }
+    return render(request, "product/staff_find_book.html", context)
+
 def find_book_view(request, *args, **kwargs):
     if request.method == 'POST':
         form = ProductSearchForm(request.POST)

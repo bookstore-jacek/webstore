@@ -11,21 +11,24 @@
 </div>
 
 <div class=view_order_right><br></br>
-    <p style="font-size: 20px;font-weight: bold;">{{ product.name}}</p>
-    <br></br>
     <div>
         
          <div style="float:left; width:50%; "><center>Klient:</center></div> 
-         <div style="float: right; width:50%; font-weight: bold">{{ order.customer.first_name }} {{ order.customer.last_name }}</div>
+         <div style="float: right; width:50%; font-weight: bold"><center>{{ order.customer.first_name }} {{ order.customer.last_name }}</center></div>
          
          <br style="clear:both" />
          
-         <div style="float:left; width:50%;">Próg:</div> 
-         <div style="float: right; width:50%;">{{ product.threshold}}</div>
+         <div style="float:left; width:50%;">Numer telefonu:</div> 
+         <div style="float: right; width:50%;">{{ order.customer.phone}}</div>
+
+         <br style="clear:both" />
+         
+         <div style="float:left; width:50%;">Adres e-mail:</div> 
+         <div style="float: right; width:50%;">{{ order.customer.email}}</div>
     </div>
     <br></br>
     <div id="edit_product">
-         <p style="font-size: 20px;font-weight: bold">Zaktualizuj</p>
+         <p style="font-size: 20px;font-weight: bold">Statusy zamówienia:</p>
          <div style="float:left; width:33%">Nazwa</div><div style="float:left; width:33%"">Dostępnych</div><div style="float:left;width:33%">Próg</div>
          <br style="clear:both" />
          <br></br>
@@ -33,7 +36,7 @@
      </div>
  </div>
 
-<div class=view_order_right>
+<!-- <div class=view_order_right>
     <div style="font-size: 15px;">
         <br></br>
         Klient: <b>{{ order.customer.first_name }} {{ order.customer.last_name }}</b>
@@ -52,5 +55,5 @@
         {% endfor %}
     </div>
 </div>
-<div style="clear:both;"></div>
+<div style="clear:both;"></div> -->
 {% endblock %}

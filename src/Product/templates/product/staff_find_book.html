@@ -1,16 +1,16 @@
-{% extends "base.html" %}
+{% extends "panel_base.html" %}
 
 {% block back %}
-<input type=button value="Wstecz" onClick="javascript:history.go(-1);"/>
+<input type=button value="Wstecz" onClick="/panel/;"/>
 {% endblock %}
 
 {% block content %}
-<div class="customerlistview">
-    <h4>Asortyment</h4>
-    <div id="vertical_all">
-        <form action='.' method='POST'>{% csrf_token %}
+<div class="customerlistviewg">
+    <h2><center>Asortyment</center></h2>
+    <div >
+            <center><form action='.' method='POST'> {% csrf_token %}
             {{ form.as_table }}
-            <input type='submit' class="button" value='Wyszukaj' />
+            <input type='submit' class="button" value='Wyszukaj' /></center>
         </form>
     </div>
     <nav class="orderlistnav">
